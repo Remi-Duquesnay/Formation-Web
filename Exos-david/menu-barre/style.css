@@ -1,0 +1,84 @@
+ul{
+	position: relative ;
+	display: flex ;
+	justify-content: center ;
+	list-style-type: none ;
+	margin: auto ;
+	padding: 0 ;
+	width: 40% ;
+}
+li{
+	width: 25% ;
+	height: 50px ;
+	background-color: #85e8fc ;
+	text-align: center ;
+	border-radius: 0 0 20% 20% / 0 0 40% 40% ;
+}
+a{
+	display: inline-block ;
+	width : 100% ;
+	padding-top: 15px ;
+	padding-bottom: 15px ;
+	text-decoration: none ;
+	color: black ;
+	font-weight: bold ;
+}
+li:hover{
+	background-color: #85cafc ;
+	color: white ;
+}
+.bar{
+	z-index: -1 ;
+	position: absolute ;
+	left: 0 ;
+	bottom: -5px ;
+	width: 25% ;
+	height: 30px ;
+	background-color: #3369e7 ;
+	border-radius: 0 0 20% 20% / 0 0 80% 80% ;
+	transition: 0.2s linear;
+}
+#m-home:focus-within ~ .bar{
+	left: 0% ;
+	bottom: -5px ;
+}
+#m-cours:focus-within ~ .bar{
+	left: 25% ;
+	bottom: -5px ;
+}
+#m-exer:focus-within ~ .bar{
+	left: 50% ;
+	bottom: -5px ;
+}
+#m-exam:focus-within ~ .bar{
+	left: 75% ;
+	bottom: -5px ;
+}
+#m-home:hover ~ .bar{
+	left: 0% ;
+	bottom: -10px ;
+}
+#m-cours:hover ~ .bar{
+	left: 25% ;
+	bottom: -10px ;
+}
+#m-exer:hover ~ .bar{
+	left: 50% ;
+	bottom: -10px ;
+}
+#m-exam:hover ~ .bar{
+	left: 75% ;
+	bottom: -10px ;
+}
+#m-home:focus-within{
+	background-color: #479edc ;
+}
+#m-cours:focus-within{
+	background-color: #479edc ;
+}
+#m-exer:focus-within{
+	background-color: #479edc ;
+}
+#m-exam:focus-within{
+	background-color: #479edc ;
+}
