@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap 8</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+    <body>
+		<div class="container">		
+			<div class="row my-2">
+				<div  class="col col-4">
+					<p class="mb-0">
+						<button class="w-100 btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">Boutton collapse #1</button>
+					</p>
+					<div class="collapse" id="collapse1">
+						<div class=" card card-body">
+							Texte dans la collapse 1
+						</div>
+					</div>
+					
+				</div>		
+				<div  class="col col-4">
+					<p class="mb-0">
+						<button class="w-100 btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse1">Boutton collapse #2</button>
+					</p>
+					<div class="collapse" id="collapse2">
+						<div class=" card card-body">
+							Texte dans la collapse 2
+						</div>
+					</div>
+				</div>	
+				<div  class="col col-4">
+					<p class="mb-0">
+						<button class="w-100 btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse1">Boutton collapse #3</button>
+					</p>
+					<div class="collapse" id="collapse3">
+						<div class=" card card-body">
+							Texte dans la collapse 3
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div class="container">
+			<div id="accordion">
+				<div class="card">
+					<div class="card-header" id="heading1">
+						<h4 class="mb-0">
+							<button class="btn btn-link" data-toggle="collapse" data-target="#panel1" aria-expandd="true" aria-control="panel1">Premier Element</button>
+						</h4>
+					</div>
+					<div id="panel1" class="collapse" aria-labelledby="heading1" data-parent="#accordion">
+						<div class="card-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+							minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+							commodo consequat.
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" id="heading2">
+						<h4 class="mb-0">
+							<button class="btn btn-link" data-toggle="collapse" data-target="#panel2" aria-expandd="true" aria-control="panel2">Deuxieme Element</button>
+						</h4>
+					</div>
+					<div id="panel2" class="collapse" aria-labelledby="heading2" data-parent="#accordion">
+						<div class="card-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+							minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+							commodo consequat.
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" id="heading3">
+						<h4 class="mb-0">
+							<button class="btn btn-link" data-toggle="collapse" data-target="#panel3" aria-expandd="true" aria-control="panel3">Troisieme Element</button>
+						</h4>
+					</div>
+					<div id="panel3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
+						<div class="card-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+							minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+							commodo consequat.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">		
+			<div class="row my-2" id="test">
+				<div  class="col col-4">
+					<p class="mb-0">
+						<button class="w-100 btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse11" aria-expanded="false" aria-controls="collapse1">Boutton collapse #1</button>
+					</p>
+					<div class="collapse" id="collapse11" data-parent="#test">
+						<div class=" card card-body">
+							Texte dans la collapse 1
+						</div>
+					</div>
+					
+				</div>		
+				<div  class="col col-4">
+					<p class="mb-0">
+						<button class="w-100 btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse22" aria-expanded="false" aria-controls="collapse1">Boutton collapse #2</button>
+					</p>
+					<div class="collapse" id="collapse22" data-parent="#test">
+						<div class=" card card-body">
+							Texte dans la collapse 2
+						</div>
+					</div>
+				</div>	
+				<div  class="col col-4">
+					<p class="mb-0">
+						<button class="w-100 btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse33" aria-expanded="false" aria-controls="collapse1">Boutton collapse #3</button>
+					</p>
+					<div class="collapse" id="collapse33" data-parent="#test">
+						<div class=" card card-body">
+							Texte dans la collapse 3
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+    </body>
+</html>

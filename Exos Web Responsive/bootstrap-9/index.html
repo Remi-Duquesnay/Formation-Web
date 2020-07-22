@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap 9</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+    <body>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Mon modal</button>
+	
+		<div class="modal" id="modal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Titre du modal</h5>
+					</div>
+					<div class="modal-body">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis turpis felis, pretium quis leo et, congue aliquet nulla. 
+							Morbi venenatis erat in aliquet accumsan. Integer ornare nisi sit amet nibh ultricies sagittis. Donec bibendum ipsum ipsum, sed dapibus est eleifend eget. 
+							Cras lobortis ex vitae elit cursus sodales. Nulla eleifend lacus libero, ac dignissim augue tempus ut. 
+							Vestibulum blandit, quam in tincidunt pellentesque, nisl sapien mattis ex, tincidunt auctor dui justo at tortor. Cras risus enim, venenatis ut mauris a, viverra dignissim orci. 
+							Sed quis neque sed diam iaculis ultricies. Sed tincidunt, quam vel facilisis lacinia, purus metus venenatis felis, eu dignissim velit eros condimentum mi. 
+							Praesent maximus neque sapien, a feugiat odio rhoncus ut. In in viverra sem. In volutpat vitae erat vel tincidunt. 
+							Sed gravida porta vulputate. Mauris eget odio eget mi pharetra euismod. 
+						</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-video">Mon modal avec video</button>
+	
+		<div class="modal" id="modal-video" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Titre du modal</h5>
+					</div>
+					<div class="modal-body">
+						<div class="embed-responsive embed-responsive-16by9">
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/2Z4m4lnjxkY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>
