@@ -2,7 +2,6 @@ body{
 	font-family: 'Poppins', sans-serif;
 	line-height: 30px ;
 }
-
 /*************header**************/
 #header{
 	position: fixed ;
@@ -12,44 +11,31 @@ body{
 	background-color: #5c1ef9 ;
 	height: 56px ;
 }
-
-.logo{
-	position: absolute ;
-	left: 15px ;
-	z-index: 1 ;
-}
-
-
 .brand{
 	height: 40px ;
+	position: relative ;
+	left: 15px ;
 }
-
 #navbarNav{
 	background-color: #5c1ef9 ;
-	z-index: 1 ;
 }
-
 .navbar{
 	width: 100% ;
 	height: 56px ;
 }
-
 .nav-link{
 	line-height: 18px ;
 	color: white !important ;
 }
-
 .navbar-nav{
 	background-color: #4d13de ;
 	padding-left: 1rem ;
 	margin: 1rem 1.5rem ;
 }
-
 .burger-btn{
 	height: 100% ;
 	margin-right: 2rem ;
 }
-
 .nav-burger-btn{
 	width: 30px;
 	height: 28px ;
@@ -60,7 +46,6 @@ body{
 	cursor: pointer;
 	border: 0 ;
 }
-
 .nav-burger-btn span{
 	display: block;
 	position: absolute;
@@ -73,70 +58,55 @@ body{
 	transition: .25s ease-in-out;
 	background-color: white ;
 }
-
-
 .nav-burger-btn span:nth-child(1) {
 	top: 0px;
 }
-
 .nav-burger-btn span:nth-child(2){
 	top: 12px;
 }
-
 .nav-burger-btn span:nth-child(3) {
 	top: 12px;
 }
-
 .nav-burger-btn span:nth-child(4) {
 	top: 24px;
 }
-
 .nav-burger-btn.open span:nth-child(1) {
 	top: 12px;
 	width: 0%;
 	left: 50%;
 }
-
 .nav-burger-btn.open span:nth-child(2) {
 	transform: rotate(45deg);
 }
-
 .nav-burger-btn.open span:nth-child(3) {
 	transform: rotate(-45deg);
 }
-
 .nav-burger-btn.open span:nth-child(4) {
 	top: 12px;
 	width: 0%;
 	left: 50%;
 }
-
 /******************slider-area*********************/
-.slider-bgcolor{
+#home{
 	background: rgb(255,220,87);
 	background: linear-gradient(90deg, rgba(255,220,87,1) 0%, rgba(91,31,250,1) 100%);
 	height: 400px ;
 	margin-top: 56px ;
 }
-
 .slider-phone{
 	display: none ;
 	width: 0px;
 }
-
 .slider-phone img{
 	width : 100% ;
 }
-
 .slider-text{
 	color: white ;
 	margin-left: 15px ;
 }
-
 .slider-text > h5{
 	padding-bottom: 40px;
 }
-
 .play-link{
 	color: white ;
 	border: solid 3px white ;
@@ -144,43 +114,32 @@ body{
 	padding: 6px 10px 6px 10px ;
 	white-space: nowrap ;
 }
-
-
 .play-link > i{
 	padding-right: 10px ;
 	font-size: 25px ;
 	vertical-align: sub ;
 }
-
 /***********************service area******************************/
-
 .card-service{
 	box-shadow: 0px 0px 33px -9px rgba(153,153,153,1);
 	text-align: center ;
 	margin: 15px 20px ;
 }
-
 .card-body{
 	padding: 4px ;
 }
-
 .card-img-top{
 	width: 30% ;
 	padding: 46px 0 36px 0 ;
 }
-
 .service-card-group{
 	margin-top: -90px ;
 	margin-bottom: 100px ;
 }
-
-
 /***************************about area*******************************/
-
 .losange{
 	margin-bottom: 10px ;
 }
-
 #triangle-1 {
     margin: auto;
     width: 0;
@@ -203,22 +162,14 @@ body{
     height: 2px;
     margin: auto;
 }
-
 .about-img{
 	display: none ;
 }
-
 .about-img img{
 	width: 100% ;
 }
-
 /***************************media queries***************************/
-
 @media screen and (min-width: 768px){
-	.nav-link.active{
-		padding-bottom: 6px ;
-		border-bottom: 2px solid white ;
-	}
 	.slider-phone{
 		display: block ;
 	}
@@ -227,7 +178,7 @@ body{
 		margin-right: 1rem ;
 		font-size: 30px ;
 	}
-	.slider-bgcolor{
+	#home{
 		height: 490px ;
 	}
 	.card-service{
@@ -241,10 +192,12 @@ body{
 	.slider-text i{
 		font-size: 45px ;
 	}
-
 }
-
 @media screen and (min-width: 992px){
+	.nav-link.active{
+		padding-bottom: 6px ;
+		border-bottom: 2px solid white ;
+	}
 	.nav-burger{
 		display: none ;
 	}
@@ -253,14 +206,7 @@ body{
 		padding-left: 0 ;
 		margin: 0 2% 0 0;
 	}
-	.logo{
-		z-index: 1 ;
-	}
-	#navbarNav{
-		z-index: 0 ;
-	}
 }
-
 @media screen and (min-width:1200px){
 	.nav-header, .slider-container, .service-container, .about-container{
 		margin: 0 16% ;
