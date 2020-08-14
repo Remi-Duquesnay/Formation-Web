@@ -1,0 +1,271 @@
+* {
+           font-family: Calibri;
+        }
+        /**********************************************************************************
+              Gestion simple du conteneur du controlleur
+            **********************************************************************************/
+        .controller-container {
+            display: block;
+            margin: 64px 200px 0px 200px;
+            text-align: center;
+            width: 100%;
+			font-size: 25px ;
+			color: #cb4337 ;
+			font-weight: bold ;
+        }
+
+        /**********************************************************************************
+              Partie globale de la manette (partie gris claire plus gris foncé)
+            **********************************************************************************/
+        .nes-controller{
+			position: absolute ;
+			width: 700px;
+			height: 300px ;
+			background-color: #d1d1cf;
+			border-radius: 10px ;
+			border-top: 3px solid #cacbc6 ;
+			border-right: 3px solid #aeaeac ;
+			border-bottom: 3px solid #aeaeac ;
+			border-left: 3px solid #bebebc ;
+		}
+		
+		.nes-controller .dark-part {
+            position: relative;
+			top: 50px ;
+			left: 20px ;
+            background-image: url(data:image/png;base64,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);
+            background-color: #101314;
+            border-radius: 5px;
+			width: 660px;
+            height: 232px;
+            border-bottom: 2px solid #868583;
+        }
+		
+		.extrusion{
+			position: absolute ;
+			top: -2px ;
+			left: 170px ;
+			width: 26px ;
+			height: 10px ;
+			background-color: #bebebc ;
+			border-left: solid 2px #b0b0ae ;
+			border-right: solid 2px #a6a5a1 ;
+			border-bottom: solid 2px #858583 ;
+			z-index: 1 ;
+		}
+
+
+        /**********************************************************************************
+              Gestion des flèches du contrôleur (partie de gauche)
+            **********************************************************************************/
+		.updown.arrows-outline{
+			display: block ;
+			position: absolute;
+			left: 76px ;
+			top: 66px ;
+			width: 52px ;
+			height: 132px ;
+			background-color: #d2d4d3 ;
+			border-radius: 4px ;
+			z-index: 1 ;
+		}
+		
+		.leftright.arrows-outline{
+			display: block ;
+			position: absolute;
+			left: 36px ;
+			top: 106px ;			
+			width: 132px ;
+			height: 52px ;
+			background-color: #d2d4d3 ;
+			border-radius: 4px ;
+			z-index: 1;
+		}
+		
+		.updown{
+			display: block ;
+			position: absolute;
+			left: 80px ;
+			top: 70px ;
+			width: 44px ;
+			height: 124px ;
+			background-color: #101012 ;
+			border-radius: 4px ;
+			z-index: 2;
+		}
+		
+		.leftright{
+			display: block ;
+			position: absolute ;
+			left: 40px ;
+			top: 110px ;	
+			width: 124px ;
+			height: 44px ;
+			background-color: #101012 ;
+			border-radius: 4px ;
+			z-index: 2;
+		}
+		.circle-arrows{
+			display: block ;
+			position: absolute ;
+			left: 87px ;
+			top: 117px ;
+			width: 30px ;
+			height: 30px ;
+			background-color: #140002 ;
+			border-radius: 50% ;
+			z-index: 3 ;
+		}
+
+        /**********************************************************************************
+              Partie centrale de la manette : rectangles gris, plus les bouttons
+            **********************************************************************************/
+		.first-bar{
+			position: absolute ;
+			top: 0 ;
+			left: 210px ;
+			width: 200px ;
+			height: 32px ;
+			border-radius: 0 0 8px 8px ;
+			background-color: #959792 ;	
+			z-index: 1 ;
+		}
+		
+		.second-bar{
+			position: absolute ;
+			top: 44px ;
+			left: 210px ;
+			width: 200px ;
+			height: 32px ;
+			border-radius: 8px ;
+			background-color: #959792 ;	
+			z-index: 1 ;
+		}
+		
+		.buttons-text{
+			position: absolute ;
+			top: 86px ;
+			left: 210px ;
+			width: 200px ;
+			height: 32px ;
+			border-radius: 8px ;
+			background-color: #959792 ;	
+			z-index: 1 ;
+		}
+		
+		.select-txt{
+			margin-right: 15px ;
+		}
+		
+		.buttons-background{
+			position: absolute ;
+			top: 131px ;
+			left: 210px ;
+			width: 200px ;
+			height: 68px ;
+			background-color: #d1d1cf ;	
+			border-radius: 4px ;
+			z-index: 1 ;
+		}
+		
+		.buttons{
+			position: absolute ;
+			top: 5px ;
+			left: 5px ;
+			width: 180px ;
+			height: 48px ;
+			border-top: 5px solid #bbb8b3 ;
+			border-left: 5px solid #bbb8b3 ;
+			border-right: 5px solid #bbb8b3 ;
+			border-bottom: 5px solid #c8c7c2 ;
+			border-radius: 4px ;
+			z-index: 2 ;
+		}
+		
+		.button-s{
+			width: 36px ;
+			border: solid 9px #2e3231 ;
+			border-radius: 9px ;
+			z-index: 2 ;
+		}
+		
+		.buttons .button-s:nth-child(1){
+			position: absolute ;
+			top: 50% ;
+			transform: translateY(-50%) ;
+			left: 16px ;
+		}
+		
+		.buttons .button-s:nth-child(2){
+			position: absolute ;
+			top: 50% ;
+			transform: translateY(-50%) ;
+			left: 110px ;
+		}
+		
+		.last-bar{
+			position: absolute ;
+			bottom: 0 ;
+			left: 210px ;
+			width: 200px ;
+			height: 20px ;
+			border-radius: 8px 8px 0 0 ;
+			background-color: #959792 ;	
+			z-index: 1 ;
+		}
+		
+		.nintendo-logo{
+			position: absolute ;
+			top: 40px ;
+			left: 462px ;
+			color: #cb4337 ;
+			z-index: 2 ;
+		}
+		
+		.right-button{
+			width: 76px ;
+			height: 72px ;
+			background-color: #a5a5a5 ;
+			border-radius: 6px 6px 4px 4px / 4px ;
+			text-align: right ;
+		}
+		
+		.dark-part .right-button:nth-child(12){
+			position: absolute ;
+			top: 128px ;
+			left: 440px ;
+			
+		}
+		
+		.dark-part .right-button:nth-child(13){
+			position: absolute ;
+			top: 128px ;
+			left: 530px ;
+		
+		}
+          
+		.outline{
+			position: relative ;
+			top: 2px ;
+			with: 100% ;
+			height: 74px ;
+			border-radius: 6px 6px 4px 4px / 2px 2px 4px 4px ;
+			background-color: #dad7d0 ;
+		}
+		
+		.button{
+			display: block ;
+			position: relative ;
+			top: 50% ;
+			left: 50% ;
+			transform: translate(-50%, -50%) ;
+			width: 60px ;
+			height: 60px ;
+			border-radius: 50% ;
+			border-top: solid 1px #979c95 ;
+			border-right: solid 1px #979c95 ;
+			border-bottom: solid 1px #09130b ;
+			border-left: solid 1px #09130b ;
+			background-size: 400% ;
+			background: radial-gradient(transparent, rgba(255,199,199,1) 50%, transparent 50%) -110% -110%/200% 200%, #e7080d;  
+		}
