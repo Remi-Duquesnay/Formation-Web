@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Exo 6 JS</title>
+		<script>
+		
+			function TestAge(){
+				let age = 0
+				age = prompt("Age de la personne (q = quitter) :")
+				while (age != "q"){
+					if (isNaN(age)){
+						alert("veuillez entrer un nombre")
+					} else if (age < 18){
+						alert("Cette personne est trop jeune pour entrer!!!")
+					} else if (age >= 18 && age < 70){
+						alert("Cette personne peut entrer")
+					} else {
+					alert("cette personne est trop agée pour entrer")
+					}
+					age = prompt("Age de la personne (q = quitter) :")
+				}
+				alert("Saisie terminée")
+			}
+			
+			TestAge()
+		</script>
+    </head>
+    <body>
+        <h1>Exercice 6 : Et si...encore</h1>
+        <p>Les conditions</p>
+    </body>
+</html>

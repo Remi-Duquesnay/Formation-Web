@@ -1,0 +1,68 @@
+* {
+	font-family: 'Arvo' ;
+}
+
+.title{
+	display: flex ;
+	justify-content: center ;
+}
+
+.content{
+	display: flex;
+	justify-content: center ;
+}
+
+.image{
+	display: flex ;
+	background-image: url("../corps.png") ;
+	background-position: center ;
+	background-repeat: no-repeat ;
+	width: 139px ;
+	height: 498px ;
+	margin-right: 50px ;
+}
+
+.descr{
+	width: 200px
+}
+
+.bodyPart{
+	display: none ;
+}
+
+.selector{
+	position: relative ;
+	min-width: 40px ;
+	height: 40px ;
+	background-color: rgba(0, 0, 0, 0.5) ;
+	border-radius: 40px ;
+}
+
+.selected{
+	background-color: rgba(255, 0, 0, 0.5) ;
+}
+
+#epaule{
+	top: 18% ;
+	left: 2% ;
+}
+#coude{
+	top: 37% ;
+	left: 48% ;
+}
+#poignet{
+	top: 45% ;
+	left: -62% ;
+}
+#hanche{
+	top: 48% ;
+	left: -25% ;
+}
+#genou{
+	top: 69% ;
+	left: -96% ;
+}
+#cheville{
+	top: 88% ;
+	left: -95% ;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Exo 8 JS</title>
+		<script>
+			function TestVegan(){
+				let product
+				product = prompt("Entrez un produit allimentaire pour savoir si il est d'origine annimale. (\"q\" pour quitter)")
+				while (product != "q"){
+					switch (product){
+						case 'tomate':
+							alert("Bon pour la santé et vegan")
+							break
+						case 'oeuf':
+							alert("D'origine animale même si ça n'est pas directement leur viande")
+							break
+						case 'lait':
+							alert("D'origine animale même si ça n'est pas directement leur viande")
+							break
+						case 'tofu':
+							alert("Issu du soja donc vegan mais sa culture intensive n'est pas top niveau environnement")
+							break
+						case 'miel':
+							alert("Abeille = animal = non vegan")
+							break
+						case 'foie gras':
+							alert("Pire aliment non vegan")
+							break
+						default:
+							alert("Désolé, nous n'avons pas d'information sur ce produit.")
+					}
+					product = prompt("Entrez un produit allimentaire pour savoir si il est d'origine annimale. (\"q\" pour quitter)")
+				}
+				alert("Saisie terminee")
+			}
+			TestVegan()
+			
+		</script>
+    </head>
+    <body>
+        <h1>Exercice 8 : You get what you switch</h1>
+        <p>Le switch</p>
+    </body>
+</html>

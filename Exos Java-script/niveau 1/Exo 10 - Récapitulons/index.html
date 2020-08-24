@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Exo 10 JS</title>
+		<script>
+		
+			var play = true
+			function randNb(){
+				return Math.floor(Math.random() * 101)
+				
+			}
+						
+			function game(){
+				let playerNb
+				let replay
+				let nb = randNb()
+				console.log(nb)
+				
+				while (true){
+					playerNb = prompt("Choisissez un nombre entre 0 et 100. (\"q\" pour quitter)")
+					
+					if (playerNb == "q"){
+						alert("Merci d'avoir joué, aurevoir.")
+						break
+					} else if (isNaN(playerNb)){
+						alert("Veuillez entrer un nombre entre 0 et 100")
+					} else if (playerNb < nb){
+						alert("C'est plus.")
+					} else if (playerNb > nb){
+						alert("C'est moin.")
+					} else {
+						replay = prompt("Bravo c'est gagné!!!! Voulez-vous rejouer? (o/n)")
+						if (replay == "o" || replay == "O"){
+							game()
+						} else if (replay == "n" || replay == "N"){
+							alert("Merci d'avoir joué, aurevoir.")
+							return
+						} else {
+							alert("Ceci n'est pas une réponse valide! Voulez-vous rejouer? (o=oui/n=non)")
+						}
+					}
+				}
+			}
+			
+			game()
+			
+			
+		
+		</script>        
+    </head>
+    <body>
+        <h1>Exercice 10 : Récapitulons</h1>
+        <p>Le jeu du plus ou moins</p>
+    </body>
+</html>
