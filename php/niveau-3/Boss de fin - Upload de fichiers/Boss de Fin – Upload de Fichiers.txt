@@ -1,0 +1,74 @@
+Boss de Fin – Upload de Fichiers
+
+
+Objectif
+
+Gérer l’upload de fichiers en PHP depuis un formulaire
+
+
+Enoncé
+
+En tant qu’organisateur d’une compétition e-sport en ligne, vous souhaitez développer 
+un outil permettant aux joueurs qui doivent s’affronter d’uploader des screenshots 
+de leurs matchs afin de valider leurs résultats.
+
+Vous ne devrez ici gérer que la partie concernant l’upload de ces screenshots.
+
+
+
+Vous allez devoir commencer par concevoir une page HTML très simple, contenant 
+un formulaire demandant 
+
+• Le nom ou pseudo du Joueur 1 (obligatoire)
+
+• Le nom ou pseudo du Joueur 2 (obligatoire)
+
+• L’identifiant du match (nombre allant de 1 à 64, obligatoire)
+
+• Le vainqueur (combobox contenant comme choix « Joueur 1 » et « Joueur 2 », 
+par défaut sur « Joueur 1 »)
+
+• Un champ permettant de s électionner le fichier screenshot à uploader 
+(seuls les fichiers JPG et PNG 
+sont acceptés, et ils ne doivent pas dépasser la taille de 2Mo)
+
+• Et un bouton « Envoyer » qui aura pour effet de déclencher l’upload du fichier
+Lorsque l’utilisateur uploadera un fichier (quand il cliquera donc sur « Envoyer »)
+, il faudra commencer par faire les vérifications nécessaires concernant 
+le formulaire (champs obligatoires), vérifier également si le fichier sélectionné 
+comme screenshot est valide, le screenshot étant lui aussi obligatoire.
+
+• Si une des vérifications échoue, il faut indiquer à l’utilisateur ce qui a 
+échoué afin qu’il puisse corriger (si vous utilisez bootstrap pensez aux 
+classes dédiées à ça comme alert-danger). Bonus  Au rechargement de la page, 
+préremplissez le formulaire avec les données précédemment saisies par l’utilisateur 
+afin d’améliorer l’expérience utilisateur
+
+• Si tout se passe bien, alors vous devez copier le fichier uploadé dans
+un répertoire « uploads ». on affiche un message de succès à l’utilisateur pour
+l’informer que son fichier a bien été uploadé.
+
+
+
+
+Vous renommerez ce fichier et ferez en sorte de générer systématiquement un 
+nom de fichier contenant les 2 pseudos des joueurs, le vainqueur, et
+l’identifiant du match.
+
+Par exemple  32_AlainSSJ4_KrysFree4All_W2.PNG indiquerait qu’il s’agit du
+screenshot du match n°32 opposant « AlainSSJ4 » à « KrysFree4All » avec comme 
+vainqueur le joueur 2 (W2), donc KrysFree4All .
+
+Vous pouvez définir vos propres règles, mais à la lecture du nom du fichier on 
+doit retrouver toutes les infos du formulaire.
+
+Bonus  Attention, si plusieurs screenshots sont soumis pour le même match 
+(mêmes joueurs, même vainqueur) il faut pouvoir sauvegarder tous les screenshots sans 
+que les précédents ne soient écrasés ! 
+A vous de trouver un moyen d’éviter ces risques de collisions. 
+
+Vérifiez que votre système fonctionne bien en tentant de soumettre
+plusieurs fois le même résultat pour le même match. 
+
+Il doit y avoir unfichier uploadé pour chaque validation du formulaire.
+
