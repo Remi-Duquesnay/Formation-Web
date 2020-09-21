@@ -11,8 +11,8 @@
 	</head>
 	<body>
 		<?php
-			$nameErr = $surnameErr = $birthLocationErr = "";
-		
+			 $nameErr = $surnameErr = $birthLocationErr = "";
+			$valid = true;
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				
 				if(empty($_POST["name"])) {
@@ -48,7 +48,7 @@
 				</label>
 			</p>
 			<button type="submit" name="submit">Envoyer</button><br>
-			<span><?php if($_SERVER["REQUEST_METHOD"] == "POST"){echo "<p>Bonjour ".$_POST["name"]." ".$_POST["surname"].", vous êtes né à ".$_POST["birthLocation"]."</p>";}?></span>
+			<span><?php if($_SERVER["REQUEST_METHOD"] == "POST" && $valid != false){echo "<p>Bonjour ".$_POST["name"]." ".$_POST["surname"].", vous êtes né à ".$_POST["birthLocation"]."</p>";}?></span>
 		</p>
 	</form>
 </body>
