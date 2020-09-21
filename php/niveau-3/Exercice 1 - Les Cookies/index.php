@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
 	if(!isset($_COOKIE["dateVisite"])){
-	$cokkieValue = date("d/m/Y"). " " . date("H:i:s");
+	$cokkieValue = date("d/m/Y H:i:s");
 	}else{
-	$cokkieValue =  $_COOKIE["dateVisite"]."-".date("d/m/Y"). " " . date("H:i:s");
+	$cokkieValue =  $_COOKIE["dateVisite"]."-".date("d/m/Y H:i:s");
 	}
 	setcookie("dateVisite", $cokkieValue, time() + 60 * 60 *24);
 ?>
@@ -18,12 +18,12 @@
 				$visites = explode("-", $_COOKIE["dateVisite"]);
 				$length = count($visites)-1;
 				echo "Vous avez consulté cette page ".($length+1)." fois, voici les details :<br><ul>";
-				echo "<li>".date("d/m/Y"). " " . date("H:i:s")."</li>";
 				for($i=0; $i<$length; $i++){
 					echo "<li>".$visites[$i]."</li>";
 				}
+				echo "<li>".date("d/m/Y H:i:s")."</li>";
 			}else{
-				echo "C'est votre première visite : ".date("d/m/Y"). " " . date("H:i:s");
+				echo "C'est votre première visite : ".date("d/m/Y H:i:s");
 			}
 		?>	
 		

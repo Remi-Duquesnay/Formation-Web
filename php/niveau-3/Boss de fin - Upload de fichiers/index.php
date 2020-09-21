@@ -32,16 +32,17 @@
 				</label>
 			</p>
 			<p style="display:flex; flex-direction:column; align-items:flex-start;">Vainqueur :
-					<label>Joueur 1<input type="radio" name="winner" value="player1" <?php if(isset($_POST['winner']) && $_POST['winner'] == 'player1')echo ' checked="checked"'; ?>></input></label>
-					<label>Joueur 2<input type="radio" name="winner" value="player2" <?php if(isset($_POST['winner']) && $_POST['winner'] == 'player2')echo ' checked="checked"'; ?>></input></label>
+					<label>Joueur 1<input type="radio" name="winner" value="player1" <?php if(isset($_POST['winner']) && $_POST['winner'] == 'player1'){echo ' checked="checked"';} ?>></label>
+					<label>Joueur 2<input type="radio" name="winner" value="player2" <?php if(isset($_POST['winner']) && $_POST['winner'] == 'player2'){echo ' checked="checked"';} ?>></label>
 			</p>
 			<p>
-				<label for="screenshot">Screenshot :</label><br>
+				<label for="screenshot">Screenshot :*</label><br>
 				<input type="file" name="screenshot" id="screenshot"><span class="error"><?php echo $imgErr;?></span>
 				
 			</p>
 			<p>
-				<button type="submit" name="submit">Envoyer</button>
+				<button type="submit" name="submit">Envoyer</button><br>
+				<span><?php echo $succes;?></span>
 			</p>
 		</form>
 	</body>
