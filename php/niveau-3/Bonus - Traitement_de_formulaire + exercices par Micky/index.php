@@ -3,7 +3,7 @@ if (isset($_COOKIE["vote"])) {
 	$votes = $_COOKIE["vote"];
 }else{
 	$votes="";
-}
+} 
 setcookie("gameVotes", $votes, time() + 60*60*24);
 // connection to the data base.
 $connDB = mysqli_connect("localhost", "virtual", "1234", "game_votes");

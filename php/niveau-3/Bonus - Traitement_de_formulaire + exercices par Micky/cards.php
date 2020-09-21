@@ -5,7 +5,7 @@ function card($id, $title, $nbVotes, $totalVoteScore, $imgLocation, $cookieVote)
     echo "<img class=\"card-img-top game-cover\" src=\"" . $imgLocation . "\" alt=\"" . $title . "-cover\">";
     echo "<div class=\"card-body\">";
     echo "<h4 class=\"card-title\">" . $title . "</h4>";
-    // if (!$cookieVote[$id]) {
+    // if (!$cookieVote[$id]) { 
         echo "<form action=\"note.php\" method=\"POST\">";
         echo "<p>Noter ce jeu : <select name=\"note\">";
         for ($i = 0; $i <= 5; $i++) {
