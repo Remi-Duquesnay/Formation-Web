@@ -15,14 +15,10 @@ if (!$connDB) {
 
 // Create querry for the data
 $sql = "SELECT * FROM games";
-
 // make the quarry and get the result
 $result = mysqli_query($connDB, $sql);
-
 // fetch the result rows as an array
-
 $games = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
 mysqli_free_result($result);
 mysqli_close($connDB);
 

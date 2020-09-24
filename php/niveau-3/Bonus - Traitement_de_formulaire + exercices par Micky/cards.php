@@ -1,5 +1,5 @@
 <?php
-function card($id, $title, $nbVotes, $totalVoteScore, $imgLocation, $cookieVote)
+function card($id, $title, $nbVotes, $totalVoteScore, $imgLocation)
 {
     echo "<div class=\"card\" style=\"width:300px\">";
     echo "<img class=\"card-img-top game-cover\" src=\"" . $imgLocation . "\" alt=\"" . $title . "-cover\">";
