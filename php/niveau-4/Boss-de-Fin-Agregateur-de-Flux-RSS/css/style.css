@@ -1,0 +1,38 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: black;
+}
+
+.cards{
+    margin-top: 15px;
+}
+
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: lightgray;
+    width:330px;
+    height: 550px;
+}
+
+.game-thumbnail{
+    display: flex;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    width: 90%;
+    border: 1px solid black;
+}
+
+.card-title{
+    text-align: center;
+}
+
+.date{
+    position: absolute;
+    bottom: 5px;
+    left: 15px;
+}

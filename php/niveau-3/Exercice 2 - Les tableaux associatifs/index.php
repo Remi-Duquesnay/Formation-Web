@@ -35,7 +35,7 @@
 			displayGrades($grades);
 			arsort($grades,1);
 			displayGrades($grades);
-			echo "La moyenne de la classe est : " .array_sum(array_filter($grades)) / count(array_filter($grades));
+			echo "La moyenne de la classe est : " .array_sum(array_filter($grades)) / count(array_filter($grades)); // since thers is elements without value in the array (Sophie) array_filter($array) will "remove" all of those elements to allow ths sum calcul to be correct.
 			
 			echo "</div>";
 			
