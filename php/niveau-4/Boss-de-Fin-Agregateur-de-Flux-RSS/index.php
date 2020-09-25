@@ -13,7 +13,7 @@
     <script type="text/javascript">
         $(function(){
             $("#flux-rss").load("getrss.php");
-            setInterval(function(){$("#flux-rss").load("getrss.php");},10000);
+            setInterval(function(){$("#flux-rss").load("getrss.php");},15000);
         })
     </script>
 </head>

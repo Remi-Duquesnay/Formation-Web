@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<?php
-			$nameErr = $emailErr = $telErr = $addressErr = $zipCodeErr = "";
+			$valid = $nameErr = $emailErr = $telErr = $addressErr = $zipCodeErr = "";
 			
 			function test_input($data) {
 				$data = trim($data); //Strip unnecessary characters (extra space, tab, newline)
@@ -21,10 +21,7 @@
 			}
 			
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
-				echo "<table border=1>";
-				foreach($_POST as $x => $x_value){
-					echo "<tr><td>".$x."</td><td>".$x_value."</td></tr>";
-				}
+				
 				echo "</table>";
 				$valid = true;
 				if(empty($_POST["name"])) {
@@ -77,9 +74,10 @@
 					echo "</table>";
 				}
 			}
-			
+			if($valid!=true){
 			
 		?>
+		
 		<p>* Champs requis</p>
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 			<p>
@@ -110,7 +108,9 @@
 			<p>
 				<button type="submit">Envoyer</button>
 			</p>
-		</form
+		</form>
+			<?php } ?>
+			
 	</body>
 </html>
 
