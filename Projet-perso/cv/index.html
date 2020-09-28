@@ -1,49 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        $(document).ready(function () {
+
+
+            $('.burger-btn').on('click', function () {
+                $('#nav-menu').toggleClass('open');
+                $('.nav-burger-btn').toggleClass('open');
+            });
+        });
+    </script>
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <nav id="navbar">
-            <ul id="nav-menu">
-                <li id="home-navlink"><a href="#home">Home</a></li>
-                <li id="about-navlink"><a href="#about">About me</a></li>
-                <li id="folio-navlink"><a href="#folio">Portfolio</a></li>
-                <li id="contact-navlink"><a href="#contact">Contact</a></li>
-                <span id="#navbar-bar"></span>
-            </ul>
+            <button class="burger-btn" type="button" aria-label="Toggle navigation">
+                <div class="nav-burger-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div id="nav-menu">
+                <ul>
+                    <li id="home-navlink"><a href="#home">Home</a></li>
+                    <li id="about-navlink"><a href="#about">About me</a></li>
+                    <li id="folio-navlink"><a href="#folio">Portfolio</a></li>
+                    <li id="contact-navlink"><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
     <main>
 
-        <section id="#home">
+        <section id="home">
             <h1>Rémi Duquesnay</h1>
             <h3>Web Developpeur</h3>
             <div>
-                <img class="devLogo" src="images/html.png"/>
-                <img class="devLogo" src="images/css.png"/>
-                <img class="devLogo" src="images/js.png"/>
-                <img class="devLogo" src="images/php.png"/>
+                <img class="devLogo" src="images/html.png" />
+                <img class="devLogo" src="images/css.png" />
+                <img class="devLogo" src="images/js.png" />
+                <img class="devLogo" src="images/php.png" />
             </div>
         </section>
 
-        <section id="#about">
+        <section id="about">
 
         </section>
 
-        <section id="#portfolio">
+        <section id="portfolio">
 
         </section>
 
-        <section id="#contact">
+        <section id="contact">
 
         </section>
 
     </main>
 </body>
+
 </html>
