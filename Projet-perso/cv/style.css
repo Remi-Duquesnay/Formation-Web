@@ -18,13 +18,13 @@
     overflow: hidden;
     transition: width 1s ease-in-out, height 1s ease-in-out, z-index 1s ease-in-out;
     border-radius: 50%;
-    background-color: rgba(119, 136, 153, 0.9);
+    background-image: linear-gradient( 112.1deg,  rgba(32,38,57,1) 11.4%, rgba(63,76,119,1) 70.2% );
 }
 #nav-menu.open{
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    z-index: 10;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -33,9 +33,10 @@
     height: 200vh ;
     white-space: nowrap;
     overflow: hidden;
-    background-color: rgba(119, 136, 153, 0.9);
+    background-image: linear-gradient( 112.1deg,  rgba(32,38,57,1) 11.4%, rgba(63,76,119,1) 70.2% );
 }
 #nav-menu ul{
+    position: absolute;
     text-align: center;
     list-style: none;
     line-height: 3;
@@ -46,7 +47,8 @@
 
 #nav-menu ul li a{
     font-size: 20px;
-    color: black;
+    font-weight: bold;
+    color: whitesmoke;
     text-decoration: none;
     opacity: 1;
 }
@@ -59,7 +61,7 @@ a:hover{
 }
 .burger-btn{
     position: absolute;
-    z-index: 2;
+    z-index: 11;
     right: 0.5rem;
     display: flex;
     justify-content: center;
@@ -123,16 +125,103 @@ a:hover{
 	width: 0%;
 	left: 50%;
 }
+#home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: radial-gradient( circle 993px at 0.5% 50.5%,  rgba(137,171,245,0.37) 0%, rgba(245,247,252,1) 100.2% );
 
+}
+#photo{
+    margin: 40px 0px;
+    width: 50%;
+}
+
+.wrap {
+    width: 100%;
+  }
+  
+  #arrow {
+    height: 25px;
+    width: auto;
+  }
+  #arrow2 {
+    position: ablsolute;
+    bottom: 18px;
+    height: 25px;
+    width: auto;
+  }
+  
+  
+  
+  .wrap img {
+    margin: 0px 0 0 -40px;
+    line-height: 60px;
+    position: absolute;
+    left: 57%;
+    bottom: 10px;
+  }
+  
+  .bounce {
+    animation-iteration-count: infinite;
+    animation-duration: 1.5s;
+    animation: bounce 3.6s ease infinite;
+    transform-origin: 50% 50%;
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    5% {
+      transform: translateY(0);
+    }
+    11% {
+      transform: translateY(0);
+    }
+    22% {
+      transform: translateY(-15px);
+    }
+    27% {
+      transform: translateY(0);
+    }
+    33% {
+      transform: translateY(-15px);
+    }
+    44% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+/****************************************************/
 @media screen and (min-width: 768px){
     .burger-btn{
         display: none;
     }
     #nav-menu{
+        border-radius: 0;
+        background-color: transparent;
         position: relative;
-        display: flex;
-        justify-content: space-between;
         width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    #nav-menu ul{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    } 
+    #nav-menu ul li{
+        padding: 0;
     }
     header{
         height: 40px;
@@ -143,7 +232,9 @@ a:hover{
     }
     #navbar{
         display: flex;
-        align-items: center;
-        width: 33%;
+        width: 50%;
+    }
+    .wrap{
+        display: none;
     }
 }
