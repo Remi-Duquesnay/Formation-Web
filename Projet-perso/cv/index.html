@@ -8,11 +8,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
     <script>
         $(document).ready(function () {
-
-
             $('.burger-btn').on('click', function () {
                 $('#nav-menu').toggleClass('open');
                 $('.nav-burger-btn').toggleClass('open');
@@ -45,45 +43,51 @@
     </header>
 
     <main>
+        <div class="left-layer"></div>
+        <div class="left-layer left-layer--2"></div>
+        <div class="left-layer left-layer--3"></div>
+        <div class="left-layer left-layer--4"></div>
 
-        <section id="home">
-            <h1>Rémi Duquesnay</h1>
-            <h3>Web Developpeur</h3>
+        <div class="wrap" id="prev-btn">
+            <img src="http://image.flaticon.com/icons/svg/3/3907.svg" id="arrow-prev" class="bounce">
+            <img src="http://image.flaticon.com/icons/svg/3/3907.svg" id="arrow-prev-2" class="bounce">
+        </div>
+
+        <div class="wrap" id="next-btn">
+            <img src="http://image.flaticon.com/icons/svg/3/3907.svg" id="arrow-next" class="bounce">
+            <img src="http://image.flaticon.com/icons/svg/3/3907.svg" id="arrow-next-2" class="bounce">
+        </div>
+
+        <section id="home" class="displayed">
             <img id="photo" src="images/uokpl.rs-placeholder-png-5508322.png" alt="Photo">
             <div>
+                <h1>Rémi Duquesnay</h1>
+                <h3>Web Developpeur</h3>
                 <img class="devLogo" src="images/html.png" />
                 <img class="devLogo" src="images/css.png" />
                 <img class="devLogo" src="images/js.png" />
                 <img class="devLogo" src="images/php-sql.png" />
             </div>
-            <div class="wrap">
-                <img src="http://image.flaticon.com/icons/svg/3/3907.svg" id="arrow" class="bounce">
-                <img src="http://image.flaticon.com/icons/svg/3/3907.svg" id="arrow2" class="bounce">
-            </div>
         </section>
 
         <section id="about">
-            <div class="wrap">
-                <img src="http://image.flaticon.com/icons/svg/3/3907.svg" id="arrow" class="bounce">
-                <img src="http://image.flaticon.com/icons/svg/3/3907.svg" id="arrow2" class="bounce">
+            <div>
+                <p>A propos de moi :<br></p>
+                <p>Je suis actuellement en formation de developpement Web, une fois cette formation terminée,
+                    j'ai pour projet de prolonger ma formation de developpeur au sein de l'école superieure
+                    d'informatique <a href="http://www.campusid.fr/">Campus ID</a>
+
+                </p>
             </div>
         </section>
-
         <section id="portfolio">
-            <div class="wrap">
-                <img src="http://image.flaticon.com/icons/svg/3/3907.svg" id="arrow" class="bounce">
-                <img src="http://image.flaticon.com/icons/svg/3/3907.svg" id="arrow2" class="bounce">
-            </div>
         </section>
 
         <section id="contact">
-            <div class="wrap">
-                <img src="http://image.flaticon.com/icons/svg/3/3907.svg" id="arrow" class="bounce">
-                <img src="http://image.flaticon.com/icons/svg/3/3907.svg" id="arrow2" class="bounce">
-            </div>
         </section>
 
     </main>
 </body>
+<script type="text/javascript" src="js/pages.js"></script>
 
 </html>
