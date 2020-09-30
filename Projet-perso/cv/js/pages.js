@@ -3,26 +3,34 @@ $("#next-btn").click(function () { change_page("next") });
 
 
 
-function change_page(change = "") {
+function change_page(change = "",) {
     anim_next_page();
     setTimeout(function () {
         let page = "#" + $(".displayed").attr("id");
         $(page).removeClass("displayed");
-        if(change="next") // continuer ici!!!
         switch (page) {
             case "#home":
                 nextPage = "#about";
                 break;
             case "#about":
+                prevPage = "#home";
                 nextPage = "#folio";
                 break;
             case "#folio":
+                prevPage = "#about";
                 nextPage = "#contact";
                 break;
             default:
-                nextPage = "#home";
+                prevPage = "#folio";
         }
-        $(nextPage).addClass("displayed");
+        if(change="next"){
+            $(nextPage).addClass("displayed");
+        }else if(change="prev"){
+            $(prevPage).addClass("displayed");
+        }else{
+            $(change).addClass("displayed");
+        }
+        
     }, 500);
 }
 function anim_next_page() {
