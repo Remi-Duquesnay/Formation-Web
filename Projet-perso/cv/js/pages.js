@@ -1,12 +1,18 @@
 $("#prev-btn").click(function () { change_page("prev") });
 $("#next-btn").click(function () { change_page("next") });
 
+function displayNavBTNs(page){
+    if(page=="#home" || page="" || page="" || page=""){
+    $("#prev-btn").addClass("displayed")
+}
+}
 
 
 function change_page(change = "",) {
     anim_next_page();
     setTimeout(function () {
-        let page = "#" + $(".displayed").attr("id");
+        let page = "#" + $("section.displayed").attr("id");
+        displayNavBTNs(page)
         $(page).removeClass("displayed");
         switch (page) {
             case "#home":
