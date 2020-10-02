@@ -19,7 +19,7 @@ input{
 label{
     margin-top: 16px;
 }
-#subject{
+#msg-subject{
     width: 100%;
 }
 #msg{
