@@ -14,6 +14,9 @@
             $('.burger-btn').on('click', function () {
                 $('#nav-menu').toggleClass('open');
                 $('.nav-burger-btn').toggleClass('open');
+                if($('#nav-menu').hasAttr('tabIndex')){
+                    $('#nav-menu')
+                }
             });
         });
     </script>
@@ -33,10 +36,10 @@
             </button>
             <div id="nav-menu">
                 <ul>
-                    <li id="home-navlink"><a href="#home">Home</a></li>
-                    <li id="about-navlink"><a href="#about">About me</a></li>
-                    <li id="folio-navlink"><a href="#folio">Portfolio</a></li>
-                    <li id="contact-navlink"><a href="#contact">Contact</a></li>
+                    <li><a class="navlink" href="#home">Home</a></li>
+                    <li><a class="navlink" href="#about">About me</a></li>
+                    <li><a class="navlink" href="#folio">Portfolio</a></li>
+                    <li><a class="navlink" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </nav>
