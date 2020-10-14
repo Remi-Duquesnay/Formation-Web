@@ -1,0 +1,32 @@
+1)
+INSERT INTO client (codeClient, nom, cpclient, villeclient, tel) VALUES ('c001', 'Rémi', '06130', 'Grasse', '0601010101'), ('c002', 'Alain', '06130', 'Grasse', '0602020202'), ('c003', 'Aicha', '06600', 'Anitbes', '0603030303'), ('c004', 'Marine', '83840', 'Bargème', '0604040404'), ('c005', 'Stephanie', '06460', 'Escragnolles', '0605050505'), ('c006', 'Claire', '06130', 'Grasse', '0606060606'), ('c007', 'Mickael', '06130', 'Grasse', '0607070707');
+
+INSERT INTO echantillon (codeEchantillon, codeClient, dateEntree) VALUES (001, 'c001', '2020-10-01'), (002, 'c002', '2020-10-02'), (003, 'c003', '2020-10-03'), (004, 'c004', '2020-10-04'), (005, 'c005', '2020-10-05'), (006, 'c006', '2020-10-06'), (007, 'c007', '2020-10-07') 
+
+INSERT INTO typeanalyse (refTypeAnalyse, designation, prixTypeAnalyse) VALUES
+(001, 'vitamines', 10), (002, 'cholestérol', 20), (003, 'syphilis', 25)
+
+INSERT INTO realiser (codeEchantillon, refTypeAnalyse, dateRealisation) VALUES
+(001, 001, '2020-10-10'), (002, 003, '2020-10-11'), (003, 001, '2020-10-12'), (004, 002, '2020-10-13'), (005, 003, '2020-10-14'), (006, 001, '2020-10-15'), (007, 002, '2020-10-16')
+
+2)
+UPDATE typeanalyse SET prixTypeAnalyse = prixTypeAnalyse + (prixTypeAnalyse * 10)/100
+
+3)
+UPDATE typeanalyse SET prixTypeAnalyse = 80 
+
+4)
+UPDATE realiser SET dateRealisation = NOW() 
+
+5)
+UPDATE client SET client.tel = '0611111111' WHERE client.codeClient = 'c001' 
+
+6)
+UPDATE echantillon
+SET echantillon.dateEntree = '2019-10-08'
+WHERE echantillon.dateEntree = '2020-10-08';
+
+UPDATE realiser
+SET realiser.dateRealisation = '2019-10-08'
+WHERE realiser.dateRealisation = '2020-10-08';
+

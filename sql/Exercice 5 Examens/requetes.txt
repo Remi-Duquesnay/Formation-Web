@@ -1,0 +1,93 @@
+1)
+SELECT * from stagiaires
+
+2)
+SELECT * from examens
+
+3)
+SELECT stagiaires.Tel from stagiaires
+
+4)
+SELECT examens.NumE, examens.Date FROM examens
+
+5)
+SELECT * FROM stagiaires ORDER BY stagiaires.NomS ASC 
+
+6)
+SELECT * FROM examens WHERE examens.Salle = 'A2' OR examens.Salle = 'A3' 
+
+7)
+SELECT * FROM examens WHERE examens.TypeE = 'P' 
+
+8)
+SELECT * FROM examens WHERE examens.TypeE = 'P' ORDER by examens.Date 
+
+9)
+SELECT * FROM examens ORDER BY examens.Salle ASC, examens.Date DESC 
+
+10)
+SELECT passerexamen.NumE, passerexamen.Note FROM passerexamen WHERE passerexamen.NumS = 'S01' 
+
+11)
+SELECT passerexamen.NumE, passerexamen.Note FROM passerexamen WHERE passerexamen.NumS = 'S01' AND passerexamen.Note >= 12 
+
+12)
+SELECT * FROM stagiaires WHERE stagiaires.NomS LIKE '%e%' 
+
+13)
+SELECT stagiaires.PrenomS FROM stagiaires WHERE stagiaires.PrenomS LIKE '%s' 
+
+14)
+SELECT stagiaires.PrenomS FROM stagiaires WHERE stagiaires.PrenomS LIKE '%s' OR stagiaires.PrenomS LIKE '%d' 
+
+15)
+SELECT stagiaires.NomS, stagiaires.PrenomS FROM stagiaires WHERE stagiaires.NomS LIKE '%e' AND stagiaires.PrenomS LIKE '%s' 
+
+16)
+SELECT stagiaires.NomS FROM stagiaires WHERE stagiaires.NomS LIKE '_a%' 
+
+17)
+SELECT stagiaires.NomS FROM stagiaires WHERE stagiaires.NomS NOT LIKE '_a%' 
+
+18)
+SELECT examens.NumE FROM examens INNER JOIN passerexamen ON examens.NumE = passerexamen.NumE WHERE examens.Salle like 'A%' AND examens.TypeE = 'p'
+
+19)
+
+
+20)
+
+
+21)
+SELECT passerexamen.NumE, MIN(passerexamen.Note), MAX(passerexamen.Note) FROM passerexamen GROUP BY passerexamen.NumE 
+
+22)
+SELECT MIN(passerexamen.Note), MAX(passerexamen.Note) FROM passerexamen WHERE passerexamen.NumE = 'E05' 
+
+23)
+SELECT passerexamen.NumE, (MAX(passerexamen.Note) - MIN(passerexamen.Note)) FROM passerexamen GROUP BY passerexamen.NumE 
+
+24)
+SELECT COUNT(*) FROM examens WHERE examens.TypeE = 'p' 
+
+25)
+
+
+26)
+SELECT COUNT(*) FROM stagiaires WHERE stagiaires.NomS LIKE '%r%' OR stagiaires.NomS LIKE '%s%' 
+
+
+27)
+SELECT stagiaires.NumS, MAX(passerexamen.Note) FROM stagiaires INNER JOIN passerexamen ON stagiaires.NumS = passerexamen.NumS GROUP BY stagiaires.NumS 
+
+28)
+
+
+
+
+
+
+
+
+
+
