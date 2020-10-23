@@ -37,7 +37,7 @@ GROUP BY mois
 SELECT client.prenom, client.nom, COUNT(commande.id) AS nbr_commandes, ROUND(sum(commande.cache_prix_total), 2) AS montant_total_commandes
 FROM commande
 INNER JOIN client ON client.id = commande.client_id
-GROUP BY client.nom
+GROUP BY client.id
 ORDER BY nbr_commandes DESC, montant_total_commandes DESC
 LIMIT 10
 
@@ -70,19 +70,7 @@ CREATE TABLE commande_category (
     description varchar(255) NOT NULL DEFAULT '' 
 );
 
-13)
-INSERT INTO commande_category VALUES 
-(1, 'commandes de moins de 200€'),
-(2, 'commandes entre 200€ et 500€'),
-(3, 'commandes entre 500€ et 1.000€'),
-(4, 'commandes supérieures à 1.000€');
 
-14)
-DELETE commande_ligne.*, commande.* 
-FROM commande
-INNER JOIN commande_ligne 
-ON commande_ligne.commande_id = commande.id
-WHERE commande.date_achat < '2019-02-01'
 
 
 
