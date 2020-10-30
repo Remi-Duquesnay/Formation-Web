@@ -24,10 +24,10 @@ function getAllUsers(){
 function displayUsers(){
     $array = getAllUsers();
 
-    echo "<table border=\"1\"><tr><th>ID</th><th>Name</th><th>Lastname</th><th>E-Mail</th><th>Pro</th></tr>";
+    echo "<table border=\"1\"><tr><th>ID</th><th>Name</th><th>Lastname</th><th>E-Mail</th><th>Pro</th><th>Actions</th></tr>";
 
     foreach($array as $row){
-        echo "<tr><td>" . $row['id'] . "</td><td>" . $row['name'] . "</td><td>" . $row['lastname'] . "</td><td>" . $row['email'] . "</td><td>" . $row['pro'] . "</td></tr>";
+        echo "<tr><td>" . $row['id'] . "</td><td>" . $row['name'] . "</td><td>" . $row['lastname'] . "</td><td>" . $row['email'] . "</td><td>" . $row['pro'] . "</td><td><form action=\"home.php\" method=\"POST\"><input type=\"hidden\" name=\"id\" value=\"".$row['id']."\"></form><form action=\"formuser.php\" method=\"POST\"><input type=\"hidden\" name=\"id\" value=\"".$row['id']."\"><button type=\"submit\" name=\"modify\">Modify</button><button type=\"submit\" name=\"delete\">Delete</button></form></td></tr>";
     }
 
     echo "</table>";
@@ -41,7 +41,19 @@ function displayUsers(){
 
 session_start();
 
-if(isset($_SESSION["userid"])){
+if(isset($_POST["delete"])){
+    $conn = dbh();
+
+    $id = $_POST['id'];
+
+    $sql = "DELETE FROM Utilisateurs WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(array($id));
+
+    $conn = null;
+}
+
+if(isset($_SESSION["userid"] )){
     displayUsers();
 }else{
     header("Location: login.php");

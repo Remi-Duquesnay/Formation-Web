@@ -1,6 +1,5 @@
 <?php
 
-
 function test_input($data)
 {
     $data = trim($data); //Strip unnecessary characters (extra space, tab, newline)
@@ -146,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                     echo ' checked="checked"';
                                                                 } ?>>
         <label for="particulier"> particulier</label>
-        <input type="radio" id="particulier" name="particulier" value="false" <?php if (isset($_POST['pro']) && $_POST['pro'] == 'particulier') {
+        <input type="radio" id="particulier" name="pro" value="particulier" <?php if (isset($_POST['pro']) && $_POST['pro'] == 'particulier') {
                                                                             echo ' checked="checked"';
                                                                         } ?>>
         <span class="error"><?php echo $proErr; ?></span>
