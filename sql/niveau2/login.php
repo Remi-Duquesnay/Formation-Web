@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $emailErr = $passwordErr = "";
 
 function test_input($data)
@@ -104,19 +106,15 @@ function login($email, $password, $date)
         try {
             $dbh = new PDO('mysql:host=localhost;dbname=niveau2', $dbUser, $dbPass);
 
-            $sql = "SELECT * FROM Utilisateurs WHERE email = ? ";
-            $stmt = $dbh->prepare($sql);
-            $stmt->execute(array($email));
-            $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            var_dump($user);
+            $sql = "SELECT password FROM Utilisateurs WHERE email = '$email' ";
+            $stmt = $dbh->query($sql);
 
-            $passCheck = password_verify($password, $user[0]["password"]);
-
+            foreach ($stmt as $row) {
+                $passCheck = password_verify($password, $row["password"]);
+            }
             if ($passCheck == 1) {
                 $_SESSION['email'] = $email;
                 connexionsLog($email, $password, $clientIp, '1');
-                session_start();
-                $_SESSION["userid"] = $user[0]["id"];
                 header('location: home.php');
             } else {
                 connexionsLog($email, $password, $clientIp, '0');

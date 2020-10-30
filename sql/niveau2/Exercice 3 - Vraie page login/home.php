@@ -1,7 +1,48 @@
 <?php
 
+function dbh()
+{
+    $dbUser = 'root';
+    $dbPass = '';
+
+    $conn = new PDO('mysql:host=localhost;dbname=niveau2', $dbUser, $dbPass);
+
+    return $conn;
+}
+
+function getAllUsers(){
+    $conn = dbh();
+
+    $sql = "SELECT * FROM Utilisateurs";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+
+}
+
+function displayUsers(){
+    $array = getAllUsers();
+
+    echo "<table border=\"1\"><tr><th>ID</th><th>Name</th><th>Lastname</th><th>E-Mail</th><th>Pro</th></tr>";
+
+    foreach($array as $row){
+        echo "<tr><td>" . $row['id'] . "</td><td>" . $row['name'] . "</td><td>" . $row['lastname'] . "</td><td>" . $row['email'] . "</td><td>" . $row['pro'] . "</td></tr>";
+    }
+
+    echo "</table>";
+}
+
+
+
+
+
+
+
 session_start();
 
-echo $_SESSION['email'];
-
-?>
+if(isset($_SESSION["userid"])){
+    displayUsers();
+}else{
+    header("Location: login.php");
+}
