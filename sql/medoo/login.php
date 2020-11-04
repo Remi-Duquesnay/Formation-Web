@@ -1,36 +1,22 @@
 <?php
 
-include "./includes/functions.inc.php";
-
-$emailErr = $passwordErr = "";
-
-
-
+include "includes/functions.inc.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $email = test_input($_POST["email"]);
-    $password = test_input($_POST["password"]);
-    $valid = true;
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $emailErr = "A valid E-Mail is required";
-        $valid = false;
-    }
-    if (empty($password)) {
-        $passwordErr = "The password is required";
-        $valid = false;
-    }
+    $email = test_input($_POST['email']);
+    $password = test_input($_POST['password']);
 
-    if ($valid == true) {
-        if(!verifyIpBan(5)){
-            login($email, $password);
-        }else{
-            echo "<script>alert(\"Too many connexions attempted. \\nFor safety you cannot login. \\nYou can try again in 30min \")</script>"; 
+    if (!verifyIpBan(5) || !verifyEmailBan($email, 5)) {
+        if (login($email, $password)) {
+            header('location: home.php');
+        } else {
+            echo "<script>alert(\"Combinaison E-Mail/Mot de passe incorrecte!\")</script>";
         }
-        
+    } else {
+        echo "<script>alert(\"Trop de tentative de connexions. \\nPour des raisons de sécurité, vous ne pouvez pas vous connecter. \\nVous pourrez réessayer dans 30 minutes \")</script>";
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,12 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form action="login.php" method="post">
 
         <label for="Email">E-Mail</label>
-        <input type="text" id="email" name="email" value="<?php echo isset($_POST["email"]) ? $_POST["email"] : "" ?>"><span class="error"><?php echo $emailErr; ?></span>
+        <input type="text" id="email" name="email" value="<?php echo isset($email) ? $email : "" ?>">
         <br>
         <label for="password">Password</label>
-        <input type="password" id="password" name="password"><span class="error"><?php echo $passwordErr; ?></span>
-        <br>
-        <a href="resetpassword.php">Forgot your password?</a>
+        <input type="password" id="password" name="password">
+        <a href="forgotPwd.php">Forgot your password?</a>
         <br>
         <button type="submit" name="submit">Submit</button>
     </form>

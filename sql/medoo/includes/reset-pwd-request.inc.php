@@ -1,9 +1,9 @@
 <?php
 
+include "functions.inc.php";
+include "sendemail.php";
+
 $emailErr = "";
-
-
-
 
 if (isset($_POST["resetPasswordSubmit"])) {
 
@@ -15,16 +15,17 @@ if (isset($_POST["resetPasswordSubmit"])) {
         if (emailExist($email)) {
 
             $selector = bin2hex(random_bytes(8));
-            $token = random_bytes(32);
-            $url = "localhost/Formation-Web/sql/niveau2/Exercice-4-Page-reset-password/change-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
-            $expires = date("U") + 1800;
+            $token = bin2hex(random_bytes(32));
+            $url = "localhost/Formation-Web/sql/medoo/changePwd.php?selector=" . $selector . "&token=" . $token;
 
-            saveToken($email, $selector, $token, $expires);
-            sendMail($email, $url);
-            echo "<script>alert(\"Un E-mail pour réinitialiser votre mot de passe vous a été envoyé.\")</script>";
+            $subject = "Reinitialisation du mot de passe";
+            $body = "<a href='".$url."'>".$url."</a>";
+
+            savePwdToken($email, $selector, $token);
             
+            /* send_mail($email, $subject, $body); */
+            echo $url;
         }
+        echo "<script>alert(\"Un E-mail pour réinitialiser le mot de passe a été envoyé à l'adresse indiquée.\")</script>";
     }
-} else {
-    header("Location: ../index.php");
 }

@@ -1,6 +1,16 @@
 <?php
 error_reporting(E_ALL ^ E_DEPRECATED);
-require_once 'PHPMailerAutoload.php';
+// On importe les classes de PHPMailer
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
+
+
+
 
 /*******************
 $to : adresse email du destinataire (ex : "kevindu93@gmail.com")

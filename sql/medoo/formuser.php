@@ -14,46 +14,14 @@
 <?php
 session_start();
 
-function dbh()
-{
-    $dbUser = 'root';
-    $dbPass = '';
+include "includes/functions.inc.php";
+include "includes/formHandling.inc.php";
 
-    $conn = new PDO('mysql:host=localhost;dbname=niveau2', $dbUser, $dbPass);
-
-    return $conn;
-}
-
-function test_input($data)
-{
-    $data = trim($data); //Strip unnecessary characters (extra space, tab, newline)
-    $data = stripslashes($data); //Remove backslashes
-    $data = htmlspecialchars($data); //converts special characters to HTML entities to avoid malicious code injection
-    return $data;
-}
-
-function verifEmailDispo($email)
-{
-    $dbUser = 'root';
-    $dbPass = '';
-
-    $dbh = new mysqli('localhost', $dbUser, $dbPass, 'niveau2');
-    if ($dbh->connect_error) {
-        die("Connection failed: " . $dbh->connect_error);
-    }
-    $sql = "SELECT email FROM Utilisateurs WHERE email = ? ";
-    $stmt = $dbh->prepare($sql);
-    $stmt->bind_param('s', $email);
-    $stmt->execute();
-    $result = $stmt->fetch();
-    return $result;
-}
-
-function adduser($name, $lastname, $email, $pro, $password)
+/* function adduser($name, $lastname, $email, $pro, $password)
 {
     $conn = dbh();
 
-    /* if (isset($password)) {
+    if (isset($password)) {
         $sql = "INSERT INTO Utilisateurs(name, lastname, email, password, pro) VALUES (?,?,?,?,?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute(array($name, $lastname, $email, $password, $pro));
@@ -61,19 +29,10 @@ function adduser($name, $lastname, $email, $pro, $password)
         $sql = "INSERT INTO Utilisateurs(name, lastname, email, pro) VALUES (?,?,?,?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute(array($name, $lastname, $email, $pro));
-    } */
-}
+    }
+} */
 
-function getUser($id)
-{
-    $conn = dbh();
 
-    $sql = "SELECT * FROM Utilisateurs WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute(array($id));
-    $result = $stmt->fetch();
-    return $result;
-}
 
 function verifFrom()
 {
@@ -130,7 +89,7 @@ if (isset($_POST['modify'])) {
     $id = $_POST['id'];
 
     $userinfo = getUser($id);
-
+    
     $_POST['name'] = $userinfo['name'];
     $_POST['lastname'] = $userinfo['lastname'];
     $_POST['email'] = $userinfo['email'];
