@@ -6,6 +6,10 @@
         change function for modify and add in ddb to get arrays in parameters to allow the change of what is needed.
 
 
+
+
+        !!!!!!! redo everything in order to generate the form in function of is use (if modify or "adminAdd" then the CGU is useless) !!!!!!!!!!!!
+                                                        thing about making it for integration in a modal ???
 -->
 
 
@@ -17,87 +21,98 @@ session_start();
 include "includes/functions.inc.php";
 include "includes/formHandling.inc.php";
 
-/* function adduser($name, $lastname, $email, $pro, $password)
-{
-    $conn = dbh();
-
-    if (isset($password)) {
-        $sql = "INSERT INTO Utilisateurs(name, lastname, email, password, pro) VALUES (?,?,?,?,?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute(array($name, $lastname, $email, $password, $pro));
-    } else {
-        $sql = "INSERT INTO Utilisateurs(name, lastname, email, pro) VALUES (?,?,?,?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute(array($name, $lastname, $email, $pro));
-    }
-} */
-
-
-
-function verifFrom()
-{
-    $name = test_input($_POST["name"]);
-    $lastname = test_input($_POST["lastname"]);
-    $email = test_input($_POST["email"]);
-    $password = test_input($_POST["password"]);
-    $passwordConfirm = test_input($_POST["passwordConfirm"]);
-
-    $valid = true;
-    if (empty($name)) {
-        $errors["name"] = "Veuillez indiquer un nom de famille.";
-        $valid = false;
-    }
-    if (empty($lastname)) {
-        $errors["lastname"] = "Veuillez indiquer un prénom.";
-        $valid = false;
-    }
-    if (empty($email)) {
-        $errors["email"] = "Veuillez indiquer un E-mail";
-        $valid = false;
-    } else {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors["email"] = "Veuillez indiquer un E-mail valide.";
-            $valid = false;
-        } else {
-            if (verifEmailDispo($email)) {
-                $valid = false;
-                $errors["email"] = "Cet E-mail est déjà utilisé!";
-            }
-        }
-    }
-    if (!empty($password)) {
-        if (strlen($password) < 8 || !preg_match("~[0-9]~", $password) ||  !preg_match("~[a-z]~", $password) ||  !preg_match("~[A-Z]~", $password)) {
-            $errors["password"] = "Le mot de passe doit contenir minimum : 8 charactères, un chiffre, une majuscule et une muniscule";
-            $valid = false;
-        } else {
-            if ($passwordConfirm != $password) {
-                $errors["passwordConfirm"] = "Les mots de passe ne correspondent pas.";
-                $valid = false;
-            }
-        }
-    }
-    if (!isset($_POST["pro"])) {
-        $errors["pro"] = "Veuillez selectioner un status.";
-    }
-    return $errors;
-}
-
 $errors = [];
 
-if (isset($_POST['modify'])) {
 
-    $id = $_POST['id'];
 
-    $userinfo = getUser($id);
+if (isset($_POST['submit'])) {
+    $verifFirstname = verifFirstname($_POST['firstname']);
+    $verifLastname = verifLastname($_POST['lastname']);
+    $verifEmail = verifEmail($_POST['email']);
     
-    $_POST['name'] = $userinfo['name'];
-    $_POST['lastname'] = $userinfo['lastname'];
-    $_POST['email'] = $userinfo['email'];
-    $_POST['pro'] = $userinfo['pro'];
-} else if (isset($_POST['add'])) {
+    
+    $valid = true;
+    if(!isset($_POST['pro'])){
+        $proErr = "Veuillez selectioner un status.";
+        $valid = false;
+    }
+    if(!isset($_POST['cgu'])){
+        $cguErr = "Veuillez lire et accepter les conditions d'utilisation.";
+        $valid = false;
+    }
+    if ($verifLastname != "valid") {
+        $lastnameErr = $verifLastname;
+        $valid = false;
+    }
+    if ($verifFirstname != "valid") {
+        $firstnameErr = $verifFirstname;
+        $valid = false;
+    }
+    if ($verifEmail != "valid") {
+        $emailErr = $verifEmail;
+        $valid = false;
+    }
+    
+    if($_POST['submit'] == "modify"){
 
-    echo "add user";
-} else if (isset($_POST['submit'])) {
+        if(!empty($_POST['password'])){
+            $verifPassword = verifPassword($_POST['password'], $_POST['passwordConfirm']);
+            if ($verifPassword != "valid") {
+        $passwordErr = $verifPassword;
+        $valid = false;
+    }
+        }
+
+    }else if($_POST['submit'] == "add"){
+
+    }
+}else{
+    if ($_POST['action'] == "modify") {
+
+        $id = $_POST['id'];
+    
+        $userinfo = getUser($id);
+        
+        $_POST['name'] = $userinfo['name'];
+        $_POST['lastname'] = $userinfo['lastname'];
+        $_POST['email'] = $userinfo['email'];
+        $_POST['pro'] = $userinfo['pro'];
+    
+    } 
+}
+
+
+    $verifFirstname = verifFirstname($_POST['firstname']);
+    $verifLastname = verifLastname($_POST['lastname']);
+    $verifEmail = verifEmail($_POST['email']);
+    $verifPassword = verifPassword($_POST['password'], $_POST['passwordConfirm']);
+    
+    $valid = true;
+    if(!isset($_POST['pro'])){
+        $proErr = "Veuillez selectioner un status.";
+        $valid = false;
+    }
+    if(!isset($_POST['cgu'])){
+        $cguErr = "Veuillez lire et accepter les conditions d'utilisation.";
+        $valid = false;
+    }
+    if ($verifLastname != "valid") {
+        $lastnameErr = $verifLastname;
+        $valid = false;
+    }
+    if ($verifFirstname != "valid") {
+        $firstnameErr = $verifFirstname;
+        $valid = false;
+    }
+    if ($verifEmail != "valid") {
+        $emailErr = $verifEmail;
+        $valid = false;
+    }
+    if ($verifPassword != "valid") {
+        $passwordErr = $verifPassword;
+        $valid = false;
+    }
+
     $errors = verifFrom();
     if (!empty($errors)) {echo "test";
         /* $password = password_hash($password, PASSWORD_DEFAULT);
@@ -105,7 +120,6 @@ if (isset($_POST['modify'])) {
     }
 
 } else if (!isset($_POST)) {
-
     header("Location: home.php");
 }
 
@@ -148,7 +162,7 @@ if (isset($_POST['modify'])) {
         <input type="radio" id="particulier" name="pro" value="particulier" <?php echo isset($_POST['pro']) && $_POST['pro'] == '0' ? ' checked="checked"' : "" ?>>
         <span class="error"><?php echo isset($errors["pro"]) ? $errors["pro"] : ""; ?></span>
         <br>
-        <button type="submit" name="submit">Submit</button>
+        <button type="submit" name="submit" value="<?php echo $_POST["action"]?>">Submit</button>
     </form>
     <?php
 

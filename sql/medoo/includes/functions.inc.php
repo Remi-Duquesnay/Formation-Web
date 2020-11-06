@@ -116,23 +116,85 @@ function getUser($id)
     return $user;
 }
 
-function displayUsers()
+function adminDisplayUsers()
 {
     $array = getAllUsers();
 
-    echo "<table border=\"1\"><tr><th>ID</th><th>Name</th><th>Lastname</th><th>E-Mail</th><th>Pro</th><th>Actions</th></tr>";
+    echo "
+        <table border=\"1\">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>E-Mail</th>
+            <th>Pro</th>
+            <th>Actions</th>
+        </tr>";
 
     foreach ($array as $row) {
-        echo "<tr><td>" . $row['id'] . "</td><td>" . $row['name'] . "</td><td>" . $row['lastname'] . "</td><td>" . $row['email'] . "</td><td>" . $row['pro'] . "</td><td><form action=home.php' method='POST'><input type='hidden' name='id' value='" . $row['id'] . "'></form><form action='formuser.php' method='POST'><input type='hidden' name='id' value='" . $row['id'] . "'><button type='submit' name='modify'>Modify</button><button type='submit' name='delete'>Delete</button></form></td></tr>";
+        echo "
+            <tr>
+                <td>" . $row['id'] . "</td>
+                <td>" . $row['name'] . "</td>
+                <td>" . $row['lastname'] . "</td>
+                <td>" . $row['email'] . "</td>
+                <td>" . $row['pro'] . "</td>
+                <td>
+                    <form action=home.php' method='POST'>
+                        <input type='hidden' name='id' value='" . $row['id'] . "'>
+                    </form>
+                    <form action='formuser.php' method='POST'>
+                        <input type='hidden' name='id' value='" . $row['id'] . "'>
+                        <button type='submit' name='action' value='modify'>Modify</button>
+                        <button type='submit' name='delete'>Delete</button>
+                    </form>
+                </td>
+            </tr>";
     }
 
     echo "</table>";
 }
 
-function addUser($name, $lastname, $email, $password, $pro)
+function addUser($lastname, $firstname, $email, $pro, $password = "") //password allways in last because the admin can add manually a user without setting a password.
 {
+    if ($password == "") {
+        $password = bin2hex(random_bytes(8));
+    }
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    dbInit()->insert("utilisateurs", ["name" => $name, "lastname" => $lastname, "email" => $email, "password" => $hashedPassword, "pro" => $pro]);
+    $data = ["lastname" => $lastname, "firstname" => $firstname, "email" => $email, "password" => $hashedPassword, "pro" => $pro];
+
+    dbInit()->insert("utilisateurs", $data);
+    if (dbInit()->error()) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function updateUser($id, $lastname, $firstname, $email, $pro, $password) //password in last to get the same formating than the addUser function.
+{
+    $data = [];
+
+    $user = getUser($id);
+
+    if ($lastname !== $user['lastname']) {
+        $data['lastname'] = $lastname;
+    }
+    if ($firstname !== $user['firstname']) {
+        $data['firstname'] = $firstname;
+    }
+    if ($email !== $user['email']) {
+        $data['email'] = $email;
+    }
+    if ($pro !== $user['pro']) {
+        $data['pro'] = $pro;
+    }
+    if (!password_verify($password, $user['password'])) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $data['password'] = $hashedPassword;
+    }
+
+    dbInit()->update("utilisateurs", $data, ['id' => $id]);
     if (dbInit()->error()) {
         return false;
     } else {

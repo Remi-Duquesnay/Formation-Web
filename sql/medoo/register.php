@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if($valid){
-        $userAdded = addUser($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password'], $_POST['pro']);
+        $userAdded = addUser($_POST['lastname'], $_POST['firstname'], $_POST['email'], $_POST['pro'], $_POST['password']);
     }
 
     

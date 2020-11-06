@@ -1,11 +1,22 @@
 <?php
 
-    include "includes/functions.inc.php";
+include "includes/functions.inc.php";
 
-    if(isPwdTokenValid("5ca744a08c792ebc", "c297ac48cd860a3761161351ceab2606292537950d8b0d0f601c1c0f0c2acf19")){
-        echo "true";
-    }else{
-        echo "false";
+test("plop", "plopi", "plopi@plop.fr", 1);
+
+function test($name, $lastname, $email, $pro, $password = "")
+{
+    if($password == ""){
+        $password = bin2hex(random_bytes(8));
     }
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $data = ["name" => $name, "lastname" => $lastname, "email" => $email, "password" => $hashedPassword, "pro" => $pro];
 
-?>
+
+    dbInit()->insert("utilisateurs", $data);
+    if (dbInit()->error()) {
+        return false;
+    } else {
+        return true;
+    }
+}

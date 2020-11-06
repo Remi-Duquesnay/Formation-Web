@@ -9,7 +9,7 @@ if(isset($_POST["delete"])){
 }
 
 if(isset($_SESSION["userid"] )){
-    displayUsers();
+    adminDisplayUsers();
 }else{
     header("Location: login.php");
 }
