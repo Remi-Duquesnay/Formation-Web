@@ -1,6 +1,6 @@
 <?php
 
-include "includes/medoo.php";
+include_once "medoo.php";
 
 use Medoo\Medoo;
 
@@ -89,10 +89,11 @@ function login($email, $password)
         $passCheck = password_verify($password, $user['password']);
 
         if ($passCheck == 1) {
-            $_SESSION['email'] = $email;
             connexionsLog($email, $password, '1');
             session_start();
+            $_SESSION['userEmail'] = $email;
             $_SESSION["userid"] = $user["id"];
+            $_SESSION['loggedIn'] = true;
             return true;
         } else {
             connexionsLog($email, $password, '0');
