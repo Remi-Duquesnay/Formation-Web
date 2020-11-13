@@ -4,7 +4,7 @@ $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $passwordConfirmErr = 
 $userAdded = false;
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addUser'])) {
     $registerError = false;
 
     $firstname = test_input($_POST['firstname']);
@@ -16,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
     $verifFirstname = verifFirstname($firstname);
     $verifLastname = verifLastname($lastname);
     $verifEmail = verifEmail($email);
-    $verifPassword = verifPassword($password, $passwordConfirm);
 
     $valid = true;
     
@@ -35,16 +34,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
         $emailErr = "Cet E-mail est déjà utilisé!";
         $valid = false;
     }
-    if ($verifPassword != "valid") {
-        $passwordErr = $verifPassword;
-        $valid = false;
+    if (!empty($password)) {
+        $verifPassword = verifPassword($password, $passwordConfirm);
+        if ($verifPassword != "valid") {
+            $passwordErr = $verifPassword;
+            $valid = false;
+        }
     }
     if (!isset($_POST['pro'])) {
         $proErr = "Veuillez selectioner un status.";
-        $valid = false;
-    }
-    if (!isset($_POST['cgu'])) {
-        $cguErr = "Veuillez lire et accepter les conditions d'utilisation.";
         $valid = false;
     }
 
@@ -53,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
         if ($userAdded) {
             echo "<script>alert(\"Création du compte réussi!\")</script>";
         } else {
-            echo "<script>alert(\"Erreur!\\nIl  y a eu un problème lors de la création du compte.\\nVeuillez rééssayer.\\nSi le problème persiste, veuillez nous contacter.\")</script>";
+            echo "<script>alert('Erreur!\\nIl  y a eu un problème lors de la création du compte.\\n\')</script>";
         }
     }else{
         $registerError = true;

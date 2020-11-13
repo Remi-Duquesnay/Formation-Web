@@ -9,8 +9,6 @@ function verifEmail($email)   // Return "valid" or an error
         $result = "Veuillez indiquer un E-mail";
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $result = "Veuillez indiquer un E-mail valide.";
-    } else if (emailExist($email)) {
-        $result = "Cet E-mail est déjà utilisé!";
     } else {
         $result = "valid";
     }

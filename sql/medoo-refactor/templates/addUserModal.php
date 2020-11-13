@@ -4,18 +4,18 @@ include_once "includes/functions.inc.php";
 include_once "includes/formHandling.inc.php";
 include_once "includes/register.inc.php";
 
-if (isset($registerError) && $registerError == true) {
+if (isset($addUserError) && $addUserError == true) {
     echo "<script type='text/javascript'>
-            $(window).on('load',function(){ $('#registerModal').modal('show');});
+            $(window).on('load',function(){ $('#addUserModal').modal('show');});
         </script>";
 }
 
 ?>
-<div class="modal fade" id="registerModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="addUserModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">S'enregister</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Ajouter un utilisateur</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -52,15 +52,10 @@ if (isset($registerError) && $registerError == true) {
                         <label for="particulier">Particulier</label>
                         <span class="error d-block"><?php echo $proErr; ?></span>
                     </div>
-                    <div class="form-group">
-                        <input type="checkbox" id="cgu" name="cgu" value="cgu">
-                        <label for="cgu" class="d-inline">Je reconnais avoir pris connaissance des conditions d’utilisation et y adhère totalement.</label>
-                        <span class="error"><?php echo $cguErr; ?></span>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Abandonner</button>
-                    <button type="submit" class="btn btn-primary" name="register">Envoyer</button>
+                    <button type="submit" class="btn btn-primary" name="addUser">Envoyer</button>
                 </div>
             </form>
         </div>

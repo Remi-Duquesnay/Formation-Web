@@ -90,7 +90,6 @@ function login($email, $password)
 
         if ($passCheck == 1) {
             connexionsLog($email, $password, '1');
-            session_start();
             $_SESSION['userEmail'] = $email;
             $_SESSION["userid"] = $user["id"];
             $_SESSION['loggedIn'] = true;
@@ -106,54 +105,80 @@ function login($email, $password)
 
 function getAllUsers() // return all users in the "utilisateurs" table
 {
-    $users = dbInit()->select("utilisateurs", ["id", "name", "lastname", "email", "pro"]);
+    $users = dbInit()->select("utilisateurs", ["id", "lastname", "firstname", "email", "pro"]);
+    return $users;
+}
+
+function getPagesOfUsers($from, $nb)
+{
+    $users = dbInit()->select("utilisateurs", ["id", "lastname", "firstname", "email", "pro"],['LIMIT' => [$from, $nb]]);
     return $users;
 }
 
 function getUser($id) // return, from the "utilisateurs" table, only the user with the id placed in parameter
 {
-    $user = dbInit()->get("utilisateurs", ["id", "name", "lastname", "email", "password", "pro"], ["id" => $id]);
+    $user = dbInit()->get("utilisateurs", ["id", "lastname", "firstname", "email", "password", "pro"], ["id" => $id]);
     return $user;
 }
 
-function adminDisplayUsers()  // display a table with all users with modify and delete buttons.
+function countUsers()
 {
+    $nbUsers = dbInit()->count('utilisateurs');
+    return $nbUsers;
+}
+
+/* function adminDisplayUsers()  // display a table with all users with modify and delete buttons.
+{
+
     $array = getAllUsers();
 
     echo "
-        <table border=\"1\">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Lastname</th>
-            <th>E-Mail</th>
-            <th>Pro</th>
-            <th>Actions</th>
-        </tr>";
+    <div class='table-responsive container'>
+        <div class='d-flex justify-content-end'>
+            <button type='button' class='btn btn-success mt-4 mb-3' data-toggle='modal' data-target='#addUserModal'>Ajouter un utilisateur</i></button>
+        </div>
+        <table class='table table-bordered table-hover table-striped'>
+            <thead class='thead-dark'>
+                <tr>
+                    <th class='text-center px-1' scope='col'>ID</th>
+                    <th class='text-center px-1' scope='col'>Name</th>
+                    <th class='text-center px-1' scope='col'>Lastname</th>
+                    <th class='text-center px-1' scope='col'>E-Mail</th>
+                    <th class='text-center px-1' scope='col'>Status</th>
+                    <th class='text-center px-1' scope='col'>Actions</th>
+                </tr>
+            </thead>
+            <tbody>";
 
     foreach ($array as $row) {
+        switch ($row['pro']) {
+            case '0':
+                $status = "Particulier";
+                break;
+            case '1':
+                $status = "Professionel";
+                break;
+        }
         echo "
+        
             <tr>
-                <td>" . $row['id'] . "</td>
-                <td>" . $row['name'] . "</td>
-                <td>" . $row['lastname'] . "</td>
-                <td>" . $row['email'] . "</td>
-                <td>" . $row['pro'] . "</td>
-                <td>
-                    <form action=home.php' method='POST'>
+                <td class='text-center px-1'>" . $row['id'] . "</td>
+                <td class='text-center px-1'>" . $row['lastname'] . "</td>
+                <td class='text-center px-1'>" . $row['firstname'] . "</td>
+                <td class='text-center px-1'>" . $row['email'] . "</td>
+                <td class='text-center px-1'>" . $status . "</td>
+                <td class='text-center px-1'>
+                    <form class='mb-0' action='' method='POST'>
                         <input type='hidden' name='id' value='" . $row['id'] . "'>
-                    </form>
-                    <form action='formuser.php' method='POST'>
-                        <input type='hidden' name='id' value='" . $row['id'] . "'>
-                        <button type='submit' name='action' value='modify'>Modify</button>
-                        <button type='submit' name='delete'>Delete</button>
+                        <button class='btn btn-primary' type='submit' name='modify'><i class='icofont-edit'></i></button>
+                        <button class='btn btn-danger' type='submit' name='delete'><i class='icofont-ui-delete'></i></button>
                     </form>
                 </td>
             </tr>";
     }
 
-    echo "</table>";
-}
+    echo "</tbody></table></div>";
+} */
 
 function addUser($lastname, $firstname, $email, $pro, $password = "") //password allways in last because the admin can add manually a user without setting a password.
 {
@@ -177,24 +202,24 @@ function updateUser($id, $lastname, $firstname, $email, $pro, $password) //passw
 
     $user = getUser($id);
 
-    if ($lastname !== $user['lastname']) {
+    if (!empty($lastname) && $lastname !== $user['lastname']) {
         $data['lastname'] = $lastname;
     }
-    if ($firstname !== $user['firstname']) {
+    if (!empty($firstname) && $firstname !== $user['firstname']) {
         $data['firstname'] = $firstname;
     }
-    if ($email !== $user['email']) {
+    if (!empty($email) && $email !== $user['email']) {
         $data['email'] = $email;
     }
     if ($pro !== $user['pro']) {
         $data['pro'] = $pro;
     }
-    if (!password_verify($password, $user['password'])) {
+    if (!empty($password)) {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $data['password'] = $hashedPassword;
     }
 
-    dbInit()->update("utilisateurs", $data, ['id' => $id]);
+    $test = dbInit()->update("utilisateurs", $data, ['id' => $id]);
     if (dbInit()->error()) {
         return false;
     } else {
@@ -204,7 +229,7 @@ function updateUser($id, $lastname, $firstname, $email, $pro, $password) //passw
 
 function removeUser($id)      //Return false if error or true if not.
 {
-    dbInit()->delete("utilisateur", ["id" => $id]);
+    dbInit()->delete("utilisateurs", ["id" => $id]);
     if (dbInit()->error()) {
         return false;
     } else {
