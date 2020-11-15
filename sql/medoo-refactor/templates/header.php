@@ -25,7 +25,9 @@ if (isset($_GET['disconnect'])) {
 
 <?php
 
+include_once "includes/functions.inc.php";
 include_once "templates/loginModal.php";
+include_once "templates/forgotPwdModal.php";
 include_once "templates/registerModal.php";
 
 ?>

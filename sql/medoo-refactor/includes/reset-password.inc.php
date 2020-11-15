@@ -1,5 +1,4 @@
 <?php
-include "functions.inc.php";
 include "formHandling.inc.php";
 
 $passwordErr = "";

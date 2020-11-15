@@ -1,6 +1,5 @@
 <?php
 
-include_once "includes/functions.inc.php";
 include_once "includes/login.inc.php";
 
 if (isset($loginError) && $loginError == true) {
@@ -26,9 +25,9 @@ if (isset($loginError) && $loginError == true) {
                         <input type="text" class="form-control" id="email" name="email" value="<?php echo isset($email) ? $email : "" ?>">
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
+                        <label for="password">Mot de passe</label>
                         <input type="password" class="form-control" id="password" name="password">
-                        <a href="forgotPwd.php">Forgot your password?</a>
+                        <a href="#forgotPwdModal" data-dismiss="modal" data-toggle="modal" data-target="#forgotPwdModal">Mot de passe oublié?</a>
                     </div>
                 </div>
                 <div class="modal-footer">

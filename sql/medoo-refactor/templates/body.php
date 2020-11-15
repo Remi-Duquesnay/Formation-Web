@@ -12,6 +12,8 @@
 if(!empty($_GET)){
     if(isset($_GET['users'])){
         include_once "templates/users.php";
+    }else if(isset($_GET['profil'])){
+        include_once "templates/profil.php";
     }
 }else{
     include_once "templates/home.php";

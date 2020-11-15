@@ -219,7 +219,7 @@ function updateUser($id, $lastname, $firstname, $email, $pro, $password) //passw
         $data['password'] = $hashedPassword;
     }
 
-    $test = dbInit()->update("utilisateurs", $data, ['id' => $id]);
+    dbInit()->debug()->update("utilisateurs", $data, ['id' => $id]);
     if (dbInit()->error()) {
         return false;
     } else {

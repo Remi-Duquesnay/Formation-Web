@@ -1,6 +1,5 @@
 <?php
 
-include "functions.inc.php";
 include "sendemail.php";
 
 $emailErr = "";

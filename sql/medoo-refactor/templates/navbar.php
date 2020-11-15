@@ -6,7 +6,7 @@
         <a class="navbar-brand" href="#">Medoo</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
             </li>
             <?php if (isset($_SESSION['loggedIn'])) : ?>
                 <li class="nav-item">
