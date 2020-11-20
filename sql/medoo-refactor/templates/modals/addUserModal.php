@@ -2,7 +2,7 @@
 
 include_once "includes/functions.inc.php";
 include_once "includes/formHandling.inc.php";
-include_once "includes/register.inc.php";
+include_once "includes/addUser.inc.php";
 
 if (isset($addUserError) && $addUserError == true) {
     echo "<script type='text/javascript'>
@@ -21,23 +21,27 @@ if (isset($addUserError) && $addUserError == true) {
                 </button>
             </div>
             <form class="mb-0" action="" method="post">
-                <input type='hidden' name='register'>
+                <input type='hidden' name='addUser'>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Nom :</label>
-                        <input type="text" class="form-control" id="name" name="lastname" value="<?php echo isset($_POST["lastname"]) ? $_POST["lastname"] : "" ?>"><span class="error"><?php echo $lastnameErr; ?></span>
+                        <input type="text" class="form-control" id="name" name="lastname" value="<?php echo isset($_POST["lastname"]) ? $_POST["lastname"] : "" ?>">
+                        <?php echo $lastnameErr; ?>
                     </div>
                     <div class="form-group">
                         <label for="lastname">Prénom :</label>
-                        <input type="text" class="form-control" id="lastname" name="firstname" value="<?php echo isset($_POST["firstname"]) ? $_POST["firstname"] : "" ?>"><span class="error"><?php echo $firstnameErr; ?></span>
+                        <input type="text" class="form-control" id="lastname" name="firstname" value="<?php echo isset($_POST["firstname"]) ? $_POST["firstname"] : "" ?>">
+                        <?php echo $firstnameErr; ?>
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail :</label>
-                        <input type="text" class="form-control" id="email" name="email" value="<?php echo isset($_POST["email"]) ? $_POST["email"] : "" ?>"><span class="error"><?php echo $emailErr; ?></span>
+                        <input type="text" class="form-control" id="email" name="email" value="<?php echo isset($_POST["email"]) ? $_POST["email"] : "" ?>">
+                        <?php echo $emailErr; ?>
                     </div>
                     <div class="form-group">
                         <label for="password">Mot de passe :</label>
-                        <input type="password" class="form-control" id="password" name="password"><span class="error"><?php echo $passwordErr; ?></span>
+                        <input type="password" class="form-control" id="password" name="password">
+                        <?php echo $passwordErr; ?>
                     </div>
                     <div class="form-group">
                         <label for="passwordConfirm">Confirmation du mot de passe :</label>
@@ -50,7 +54,7 @@ if (isset($addUserError) && $addUserError == true) {
                         <br>
                         <input type="radio" id="particulier" name="pro" value="0" <?php echo isset($_POST['pro']) && $_POST['pro'] == '0' ? ' checked="checked"' : ""; ?>>
                         <label for="particulier">Particulier</label>
-                        <span class="error d-block"><?php echo $proErr; ?></span>
+                        <?php echo $proErr; ?>
                     </div>
                 </div>
                 <div class="modal-footer">

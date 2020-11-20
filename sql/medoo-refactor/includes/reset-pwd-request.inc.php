@@ -1,6 +1,6 @@
 <?php
 
-include "sendemail.php";
+include_once "sendemail.php";
 
 $emailErr = "";
 
@@ -15,7 +15,7 @@ if (isset($_POST["resetPasswordSubmit"])) {
 
             $selector = bin2hex(random_bytes(8));
             $token = bin2hex(random_bytes(32));
-            $url = "localhost/Formation-Web/sql/medoo/changePwd.php?selector=" . $selector . "&token=" . $token;
+            $url = "localhost/Formation-Web/sql/medoo-refactor/index.php?selector=" . $selector . "&token=" . $token . "";
 
             $subject = "Reinitialisation du mot de passe";
             $body = "<a href='".$url."'>".$url."</a>";

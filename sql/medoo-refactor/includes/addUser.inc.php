@@ -20,29 +20,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addUser'])) {
     $valid = true;
     
     if ($verifLastname != "valid") {
-        $lastnameErr = $verifLastname;
+        $lastnameErr = "<p class='alert alert-danger'>" . $verifLastname . "</p>";
         $valid = false;
     }
     if ($verifFirstname != "valid") {
-        $firstnameErr = $verifFirstname;
+        $firstnameErr = "<p class='alert alert-danger'>" . $verifFirstname . "</p>";
         $valid = false;
     }
     if ($verifEmail != "valid") {
-        $emailErr = $verifEmail;
+        $emailErr = "<p class='alert alert-danger'>" . $verifEmail . "</p>";
         $valid = false;
     }else if (emailExist($email)) {
-        $emailErr = "Cet E-mail est déjà utilisé!";
+        $emailErr = "<p class='alert alert-danger'>Cet E-mail est déjà utilisé!</p>";
         $valid = false;
     }
     if (!empty($password)) {
         $verifPassword = verifPassword($password, $passwordConfirm);
         if ($verifPassword != "valid") {
-            $passwordErr = $verifPassword;
+            $passwordErr = "<p class='alert alert-danger'>" . $verifPassword . "</p>";
             $valid = false;
         }
     }
     if (!isset($_POST['pro'])) {
-        $proErr = "Veuillez selectioner un status.";
+        $proErr = "<p class='alert alert-danger d-block'>Veuillez selectioner un status.</p>";
         $valid = false;
     }
 
@@ -54,6 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addUser'])) {
             echo "<script>alert('Erreur!\\nIl  y a eu un problème lors de la création du compte.\\n\')</script>";
         }
     }else{
-        $registerError = true;
+        $addUserError = true;
     }
 }

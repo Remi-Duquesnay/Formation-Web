@@ -1,12 +1,6 @@
 <?php
 include_once "includes/reset-pwd-request.inc.php";
 
-if (isset($loginError) && $loginError == true) {
-    echo "<script type='text/javascript'>
-            $(window).on('load',function(){ $('#loginModal').modal('show');});
-        </script>";
-}
-
 ?>
 
 <div class="modal fade" id="forgotPwdModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

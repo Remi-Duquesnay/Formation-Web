@@ -202,7 +202,7 @@ function updateUser($id, $lastname, $firstname, $email, $pro, $password) //passw
 
     $user = getUser($id);
 
-    if (!empty($lastname) && $lastname !== $user['lastname']) {
+    if (!empty($lastname) && $lastname != $user['lastname']) {
         $data['lastname'] = $lastname;
     }
     if (!empty($firstname) && $firstname !== $user['firstname']) {
@@ -219,7 +219,7 @@ function updateUser($id, $lastname, $firstname, $email, $pro, $password) //passw
         $data['password'] = $hashedPassword;
     }
 
-    dbInit()->debug()->update("utilisateurs", $data, ['id' => $id]);
+    dbInit()->update("utilisateurs", $data, ['id' => $id]);
     if (dbInit()->error()) {
         return false;
     } else {

@@ -1,7 +1,5 @@
 <?php
 
-include_once "functions.inc.php";
-
 function verifEmail($email)   // Return "valid" or an error
 {
     $email = test_input($email);

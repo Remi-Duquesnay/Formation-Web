@@ -35,7 +35,7 @@ if (isset($_POST['id'])) {
                                                                                                     } else if (isset($user['lastname'])) {
                                                                                                         echo $user['lastname'];
                                                                                                     }  ?>">
-                        <span class="error"><?php echo $lastnameErr; ?></span>
+                        <?php echo $lastnameErr; ?>
                     </div>
                     <div class="form-group">
                         <label for="lastname">Prénom :</label>
@@ -44,7 +44,7 @@ if (isset($_POST['id'])) {
                                                                                                         } else if (isset($user['firstname'])) {
                                                                                                             echo $user['firstname'];
                                                                                                         } ?>">
-                        <span class="error"><?php echo $firstnameErr; ?></span>
+                        <?php echo $firstnameErr; ?>
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail :</label>
@@ -53,12 +53,12 @@ if (isset($_POST['id'])) {
                                                                                                 } else if (isset($user['email'])) {
                                                                                                     echo $user['email'];
                                                                                                 } ?>">
-                        <span class="error"><?php echo $emailErr; ?></span>
+                        <?php echo $emailErr; ?>
                     </div>
                     <div class="form-group">
                         <label for="password">Mot de passe :</label>
                         <input type="password" class="form-control" id="password" name="password">
-                        <span class="error"><?php echo $passwordErr; ?></span>
+                        <?php echo $passwordErr; ?>
                     </div>
                     <div class="form-group">
                         <label for="passwordConfirm">Confirmation du mot de passe :</label>
@@ -75,7 +75,6 @@ if (isset($_POST['id'])) {
                                                                                         echo ' checked="checked"';
                                                                                     } ?>>
                         <label for="particulier">Particulier</label>
-                        <span class="error d-block"><?php echo $proErr; ?></span>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Abandonner</button>

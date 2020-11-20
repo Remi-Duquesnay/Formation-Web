@@ -8,10 +8,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['logIn'])) {
 
     if (!verifyIpBan(5) || !verifyEmailBan($email, 5)) {
         if (!login($email, $password)) {
-            $loginError = true;
-            echo "<script>alert(\"Combinaison E-Mail/Mot de passe incorrecte!\");</script>";
+            $loginError = "<p class='alert alert-danger'>Combinaison E-Mail/Mot de passe incorrecte!</p>";
         }
     } else {
-        echo "<script>alert(\"Trop de tentative de connexions. \\nPour des raisons de sécurité, vous ne pouvez pas vous connecter. \\nVous pourrez réessayer dans 30 minutes \");window.location = 'index.php';</script>";
+        $loginError = "<p class='alert alert-danger'>Trop de tentative de connexions. <br>Pour des raisons de sécurité, vous ne pouvez pas vous connecter. <br>Vous pourrez réessayer dans 30 minutes </p>";
     }
+}else{
+    $loginError = "";
 }

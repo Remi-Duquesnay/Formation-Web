@@ -3,8 +3,8 @@
 
         if (isset($_SESSION["loggedIn"])) : ?>
             <?php
-            include_once "templates/modifyUserModal.php";
-            include_once "templates/addUserModal.php";
+            include_once "templates/modals/modifyUserModal.php";
+            include_once "templates/modals/addUserModal.php";
             ?>
             <script type="text/javascript">
                 function displayUsersPages(toPage) {
@@ -36,6 +36,11 @@
             if (isset($_POST['modify'])) {
                 echo "<script type='text/javascript'>
             $(window).on('load',function(){ $('#modifyUserModal').modal('show');});
+        </script>";
+            }
+            if (isset($_POST['addUser'])) {
+                echo "<script type='text/javascript'>
+            $(window).on('load',function(){ $('#addUserModal').modal('show');});
         </script>";
             }
             if (isset($_POST['delete'])) {

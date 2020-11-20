@@ -29,6 +29,9 @@ if (isset($loginError) && $loginError == true) {
                         <input type="password" class="form-control" id="password" name="password">
                         <a href="#forgotPwdModal" data-dismiss="modal" data-toggle="modal" data-target="#forgotPwdModal">Mot de passe oublié?</a>
                     </div>
+                    <div>
+                        <?php echo $loginError; ?>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Abandonner</button>
