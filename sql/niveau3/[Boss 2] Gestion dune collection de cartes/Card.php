@@ -151,7 +151,7 @@ class Card
 		}
 
 		/* TODO : la ligne ci-dessous a pour fonction de récupérer sous la forme d'un tableau ($values) toutes les cartes de la base de données (sans ordre de tri)*/
-		$values = self::$database->select('cates', '*'); // à compléter, voir doc de Medoo : https://medoo.in/api/select
+		$values = self::$database->select('cartes', '*'); // à compléter, voir doc de Medoo : https://medoo.in/api/select
 		$json_array = array() ;
 		for($i = 0; $i < sizeof($values); ++$i) {
 			$carte = new Card($values[$i]['id'], $values[$i]) ; // TODO : à compléter pour que l'appel au constructeur Card construise bien chaque carte avec les bons paramètres (regardez la signature du constructeur)

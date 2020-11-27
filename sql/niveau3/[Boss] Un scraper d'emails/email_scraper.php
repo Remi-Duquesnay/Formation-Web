@@ -1,8 +1,8 @@
 <?php
 
-/* $url = 'http://computerandu.wordpress.com/2011/06/29/how-to-get-google-invite/';
+/*  $url = 'https://github.com/nyxgeek/username-lists/blob/master/usernames-top100/usernames_gmail.com.txt';
 $emails = scrape_email($url);
-echo implode($emails, ' '); */
+echo implode(' ',$emails);  */
 
 function scrape_email($url) {
     if ( !is_string($url) ) {
